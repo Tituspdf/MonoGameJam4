@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGameJam4.Engine.Input;
+using IUpdateable = MonoGameJam4.Engine.Interfaces.IUpdateable;
 
 namespace MonoGameJam4
 {
@@ -9,11 +11,18 @@ namespace MonoGameJam4
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        private IUpdateable[] _engineClasses;
+        
         public GameCenter()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
+            _engineClasses = new IUpdateable[]
+            {
+                
+            };
         }
 
         protected override void Initialize()

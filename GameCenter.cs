@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Input;
 using IUpdateable = MonoGameJam4.Engine.Interfaces.IUpdateable;
 
@@ -12,22 +13,28 @@ namespace MonoGameJam4
         private SpriteBatch _spriteBatch;
 
         private IUpdateable[] _engineClasses;
-        
+
+        private InputManagement _inputManagement;
+
         public GameCenter()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
+            _inputManagement = new InputManagement();
+
             _engineClasses = new IUpdateable[]
             {
-                new InputManagement(),
+                _inputManagement
             };
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+
+            _inputManagement.GetCallback(Keys.Space).Invoked += () => { Debug.LogError("Hello World"); };
 
             base.Initialize();
         }
@@ -41,14 +48,15 @@ namespace MonoGameJam4
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             foreach (IUpdateable element in _engineClasses)
             {
                 element.Update(gameTime);
             }
-            
+
             base.Update(gameTime);
         }
 

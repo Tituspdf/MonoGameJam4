@@ -21,7 +21,7 @@ namespace MonoGameJam4
 
             _engineClasses = new IUpdateable[]
             {
-                
+                new InputManagement(),
             };
         }
 

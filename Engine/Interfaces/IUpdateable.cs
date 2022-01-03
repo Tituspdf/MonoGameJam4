@@ -2,7 +2,7 @@
 
 namespace MonoGameJam4.Engine.Interfaces
 {
-    public interface IUpdatable
+    public interface IUpdateable
     {
         public void Update(GameTime gameTime);
     }

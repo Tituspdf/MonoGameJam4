@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using IUpdateable = MonoGameJam4.Engine.Interfaces.IUpdateable;
@@ -19,9 +20,9 @@ namespace MonoGameJam4.Engine.Input
         {
             KeyboardState keyboardState = Keyboard.GetState();
 
-            foreach (var callback in _callbacks)
+            foreach (Key callback in _callbacks.Values.ToArray())
             {
-                callback.Value.Update(keyboardState);
+                callback.Update(keyboardState);
             }
         }
 

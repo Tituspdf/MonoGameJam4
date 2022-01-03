@@ -53,7 +53,7 @@ namespace MonoGameJam4.Engine.Input
         {
             bool state = keyboardState.IsKeyDown(_key);
 
-            if (!_isPressed) Invoked?.Invoke();
+            if (!_isPressed && state) Invoked?.Invoke();
 
             _isPressed = state;
         }

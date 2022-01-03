@@ -4,12 +4,12 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MonoGameJam4
 {
-    public class Game1 : Game
+    public class GameCenter : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        public Game1()
+        public GameCenter()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";

@@ -8,7 +8,7 @@ namespace MonoGameJam4.Engine.Input
 {
     public class InputManagement : IUpdateable
     {
-        private Dictionary<Keys, Key> _callbacks;
+        private readonly Dictionary<Keys, Key> _callbacks;
 
         public InputManagement()
         {
@@ -17,8 +17,13 @@ namespace MonoGameJam4.Engine.Input
 
         public void Update(GameTime gameTime)
         {
-        }
+            KeyboardState keyboardState = Keyboard.GetState();
 
+            foreach (var callback in _callbacks)
+            {
+                callback.Value.Update(keyboardState);
+            }
+        }
 
         public Key GetCallback(Keys keys)
         {
@@ -43,7 +48,7 @@ namespace MonoGameJam4.Engine.Input
             _key = key;
         }
 
-        private void Update(KeyboardState keyboardState)
+        public void Update(KeyboardState keyboardState)
         {
             bool state = keyboardState.IsKeyDown(_key);
 

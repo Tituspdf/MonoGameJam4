@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using IUpdateable = MonoGameJam4.Engine.Interfaces.IUpdateable;
 
 namespace MonoGameJam4.Engine
@@ -7,7 +9,6 @@ namespace MonoGameJam4.Engine
     {
         public void Update(GameTime gameTime)
         {
-            
         }
     }
 }

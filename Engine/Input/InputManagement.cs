@@ -18,6 +18,17 @@ namespace MonoGameJam4.Engine.Input
         public void Update(GameTime gameTime)
         {
         }
+
+
+        public Key GetCallback(Keys keys)
+        {
+            if (!_callbacks.ContainsKey(keys))
+            {
+                _callbacks.Add(keys, new Key(keys));
+            }
+
+            return _callbacks[keys];
+        }
     }
 
     public class Key

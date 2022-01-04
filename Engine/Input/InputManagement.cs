@@ -7,7 +7,7 @@ using IUpdateable = MonoGameJam4.Engine.Interfaces.IUpdateable;
 
 namespace MonoGameJam4.Engine.Input
 {
-    public class InputManagement : IUpdateable
+    public class InputManagement : EngineObject
     {
         private readonly Dictionary<Keys, Key> _callbacks;
 
@@ -16,7 +16,7 @@ namespace MonoGameJam4.Engine.Input
             _callbacks = new Dictionary<Keys, Key>();
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             KeyboardState keyboardState = Keyboard.GetState();
 

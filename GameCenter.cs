@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGameJam4.Engine;
 using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Input;
 using IUpdateable = MonoGameJam4.Engine.Interfaces.IUpdateable;
@@ -12,7 +13,7 @@ namespace MonoGameJam4
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        private IUpdateable[] _engineClasses;
+        private EngineObject[] _engineClasses;
 
         private InputManagement _inputManagement;
 
@@ -24,7 +25,7 @@ namespace MonoGameJam4
 
             _inputManagement = new InputManagement();
 
-            _engineClasses = new IUpdateable[]
+            _engineClasses = new EngineObject[]
             {
                 _inputManagement
             };

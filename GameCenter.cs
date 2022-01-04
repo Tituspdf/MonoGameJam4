@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework.Input;
 using MonoGameJam4.Engine;
 using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Input;
+using MonoGameJam4.Engine.Rendering;
+using MonoGameJam4.Engine.WorldSpace;
 using IUpdateable = MonoGameJam4.Engine.Interfaces.IUpdateable;
 
 namespace MonoGameJam4
@@ -18,6 +20,7 @@ namespace MonoGameJam4
         private InputManagement _inputManagement;
 
         private List<GameObject> _gameObjects;
+        private Camera _camera;
 
         public GameCenter()
         {
@@ -37,6 +40,9 @@ namespace MonoGameJam4
         protected override void Initialize()
         {
             _gameObjects = new List<GameObject>();
+
+            _camera = new Camera(new Transform(Vector2.Zero, Vector2.Zero), "Camera");
+            _gameObjects.Add(_camera);
 
             _inputManagement.GetCallback(Keys.Space).Invoked += () => { Debug.LogError("Hello World"); };
 

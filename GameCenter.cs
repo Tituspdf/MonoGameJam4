@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameJam4.Engine;
@@ -14,8 +15,9 @@ namespace MonoGameJam4
         private SpriteBatch _spriteBatch;
 
         private EngineObject[] _engineClasses;
-
         private InputManagement _inputManagement;
+
+        private List<GameObject> _gameObjects;
 
         public GameCenter()
         {
@@ -34,7 +36,7 @@ namespace MonoGameJam4
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            _gameObjects = new List<GameObject>();
 
             _inputManagement.GetCallback(Keys.Space).Invoked += () => { Debug.LogError("Hello World"); };
 

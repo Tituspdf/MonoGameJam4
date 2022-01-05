@@ -3,13 +3,13 @@ using MonoGameJam4.Engine.WorldSpace;
 
 namespace MonoGameJam4.Engine.Rendering
 {
-    public class Renderer
+    public class Renderer : Component
     {
         private SpriteBatch _spriteBatch;
         private Texture2D _texture;
         private Transform _transform;
 
-        public Renderer(SpriteBatch spriteBatch, Texture2D texture, Transform transform)
+        public Renderer(GameObject gameObject, SpriteBatch spriteBatch, Texture2D texture, Transform transform) : base(gameObject)
         {
             _spriteBatch = spriteBatch;
             _texture = texture;

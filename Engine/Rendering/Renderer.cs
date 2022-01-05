@@ -6,11 +6,11 @@ namespace MonoGameJam4.Engine.Rendering
 {
     public class Renderer : Component
     {
-        private SpriteBatch _spriteBatch;
+        private readonly SpriteBatch _spriteBatch;
         private Texture2D _texture;
-        private string _textureName;
-        private Transform _transform;
-        private Camera _camera;
+        private readonly string _textureName;
+        private readonly Transform _transform;
+        private readonly Camera _camera;
 
         public Renderer(GameObject gameObject, string textureName) : base(gameObject)
         {
@@ -23,7 +23,7 @@ namespace MonoGameJam4.Engine.Rendering
 
         private void Render()
         {
-            if (_texture == null) _texture = GameObject.GameCenter.ContentLoader.Textures[_textureName];
+            _texture ??= GameObject.GameCenter.ContentLoader.Textures[_textureName];
             
             Vector2 relativePosition = _transform.Position - _camera.Transform.Position;
             relativePosition *= _camera.Zoom * _camera.PixelsPerUnit;

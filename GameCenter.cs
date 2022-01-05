@@ -43,7 +43,7 @@ namespace MonoGameJam4
         {
             _gameObjects = new List<GameObject>();
 
-            _camera = new Camera(new Transform(Vector2.Zero, Vector2.Zero), "Camera");
+            _camera = new Camera(this, new Transform(Vector2.Zero, Vector2.Zero), "Camera");
             _gameObjects.Add(_camera);
 
             _inputManagement.GetCallback(Keys.Space).Invoked += () => { Debug.LogError("Hello World"); };

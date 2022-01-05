@@ -98,8 +98,9 @@ namespace MonoGameJam4
         {
             GraphicsDevice.Clear(Color.Gray);
             
+            SpriteBatch.Begin();
             Rendered?.Invoke();
-            
+            SpriteBatch.End();
             base.Draw(gameTime);
         }
     }

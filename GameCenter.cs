@@ -20,6 +20,7 @@ namespace MonoGameJam4
 
         private EngineObject[] _engineClasses;
         private InputManagement _inputManagement;
+        private ContentLoader _contentLoader;
 
         private List<GameObject> _gameObjects;
         public Camera Camera;
@@ -29,7 +30,7 @@ namespace MonoGameJam4
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-
+            
             _inputManagement = new InputManagement();
 
             _engineClasses = new EngineObject[]
@@ -41,6 +42,8 @@ namespace MonoGameJam4
 
         protected override void Initialize()
         {
+            _contentLoader = new ContentLoader();            
+            
             _gameObjects = new List<GameObject>();
 
             Camera = new Camera(this, new Transform(Vector2.Zero, Vector2.Zero), "Camera");
@@ -55,7 +58,7 @@ namespace MonoGameJam4
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            _contentLoader.LoadContend(Content);
         }
 
         protected override void Update(GameTime gameTime)

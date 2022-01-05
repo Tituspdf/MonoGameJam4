@@ -15,7 +15,7 @@ namespace MonoGameJam4
     public class GameCenter : Game
     {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        public SpriteBatch SpriteBatch;
         public event Action Rendered;
 
         private EngineObject[] _engineClasses;
@@ -56,7 +56,7 @@ namespace MonoGameJam4
 
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             _contentLoader.LoadContend(Content);
         }

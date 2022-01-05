@@ -1,2 +1,8 @@
 ﻿Day 00 - 03.01.2022
 Today I created the project and began to write the input manager class. I also created a class for logging stuff in the console to make development more easy;
+
+Day 01 - 04.01.2022
+transform, camera, engine object, game object, time class, update loop
+
+Day 02
+renderer class, window class, render variables, render event, component class, variables to gameobject class, subscribed to the render event

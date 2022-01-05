@@ -22,7 +22,7 @@ namespace MonoGameJam4
         private InputManagement _inputManagement;
 
         private List<GameObject> _gameObjects;
-        private Camera _camera;
+        public Camera Camera;
 
         public GameCenter()
         {
@@ -43,8 +43,8 @@ namespace MonoGameJam4
         {
             _gameObjects = new List<GameObject>();
 
-            _camera = new Camera(this, new Transform(Vector2.Zero, Vector2.Zero), "Camera");
-            _gameObjects.Add(_camera);
+            Camera = new Camera(this, new Transform(Vector2.Zero, Vector2.Zero), "Camera");
+            _gameObjects.Add(Camera);
 
             _inputManagement.GetCallback(Keys.Space).Invoked += () => { Debug.LogError("Hello World"); };
 

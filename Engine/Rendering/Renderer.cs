@@ -8,6 +8,7 @@ namespace MonoGameJam4.Engine.Rendering
         private SpriteBatch _spriteBatch;
         private Texture2D _texture;
         private Transform _transform;
+        private Camera _camera;
 
         public Renderer(GameObject gameObject, SpriteBatch spriteBatch, Texture2D texture) : base(gameObject)
         {
@@ -15,6 +16,7 @@ namespace MonoGameJam4.Engine.Rendering
             _texture = texture;
             _transform = gameObject.Transform;
             gameObject.GameCenter.Rendered += Render;
+            _camera = gameObject.GameCenter.Camera;
         }
 
         private void Render()

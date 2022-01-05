@@ -14,6 +14,12 @@ namespace MonoGameJam4.Engine.Rendering
             _spriteBatch = spriteBatch;
             _texture = texture;
             _transform = gameObject.Transform;
+            gameObject.GameCenter.Rendered += Render;
+        }
+
+        private void Render()
+        {
+            
         }
     }
 }

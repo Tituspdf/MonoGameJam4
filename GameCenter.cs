@@ -65,7 +65,7 @@ namespace MonoGameJam4
         protected override void LoadContent()
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
-
+            
             ContentLoader.LoadContend(Content);
         }
 

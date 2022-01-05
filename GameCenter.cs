@@ -8,6 +8,7 @@ using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Input;
 using MonoGameJam4.Engine.Rendering;
 using MonoGameJam4.Engine.WorldSpace;
+using MonoGameJam4.GameContent.Entities;
 using IUpdateable = MonoGameJam4.Engine.Interfaces.IUpdateable;
 
 namespace MonoGameJam4
@@ -25,6 +26,8 @@ namespace MonoGameJam4
         private List<GameObject> _gameObjects;
         public Camera Camera;
 
+        private bool _hasStarted;
+        
         public GameCenter()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -54,6 +57,11 @@ namespace MonoGameJam4
             base.Initialize();
         }
 
+        private void Start()
+        {
+            _gameObjects.Add(new Player(this, new Transform(Vector2.One, Vector2.One), "Player"));
+        }
+
         protected override void LoadContent()
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
@@ -63,6 +71,12 @@ namespace MonoGameJam4
 
         protected override void Update(GameTime gameTime)
         {
+            if (!_hasStarted)
+            {
+                Start();
+                _hasStarted = true;
+            }
+            
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();

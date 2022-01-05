@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MonoGameJam4.Engine.WorldSpace;
 
 namespace MonoGameJam4.Engine.Rendering
@@ -7,13 +8,14 @@ namespace MonoGameJam4.Engine.Rendering
     {
         private SpriteBatch _spriteBatch;
         private Texture2D _texture;
+        private string _textureName;
         private Transform _transform;
         private Camera _camera;
 
-        public Renderer(GameObject gameObject, SpriteBatch spriteBatch, Texture2D texture) : base(gameObject)
+        public Renderer(GameObject gameObject, string textureName) : base(gameObject)
         {
-            _spriteBatch = spriteBatch;
-            _texture = texture;
+            _spriteBatch = gameObject.GameCenter.SpriteBatch;
+            _textureName = textureName;
             _transform = gameObject.Transform;
             gameObject.GameCenter.Rendered += Render;
             _camera = gameObject.GameCenter.Camera;
@@ -21,7 +23,11 @@ namespace MonoGameJam4.Engine.Rendering
 
         private void Render()
         {
+            if (_texture == null) _texture = GameObject.GameCenter.ContentLoader.Textures[_textureName];
             
+            Vector2 relativePosition = _transform.Position - _camera.Transform.Position;
+            relativePosition *= _camera.Zoom * _camera.PixelsPerUnit;
+            _spriteBatch.Draw(_texture, relativePosition, Color.White);
         }
     }
 }

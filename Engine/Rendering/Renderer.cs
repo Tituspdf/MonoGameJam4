@@ -9,11 +9,11 @@ namespace MonoGameJam4.Engine.Rendering
         private Texture2D _texture;
         private Transform _transform;
 
-        public Renderer(GameObject gameObject, SpriteBatch spriteBatch, Texture2D texture, Transform transform) : base(gameObject)
+        public Renderer(GameObject gameObject, SpriteBatch spriteBatch, Texture2D texture) : base(gameObject)
         {
             _spriteBatch = spriteBatch;
             _texture = texture;
-            _transform = transform;
+            _transform = gameObject.Transform;
         }
     }
 }

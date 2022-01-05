@@ -19,8 +19,8 @@ namespace MonoGameJam4
         public SpriteBatch SpriteBatch;
         public event Action Rendered;
 
-        private EngineObject[] _engineClasses;
-        private InputManagement _inputManagement;
+        private readonly EngineObject[] _engineClasses;
+        private readonly InputManagement _inputManagement;
         public ContentLoader ContentLoader;
 
         private List<GameObject> _gameObjects;

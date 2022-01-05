@@ -11,6 +11,8 @@ namespace MonoGameJam4.Engine.Input
     {
         private readonly Dictionary<Keys, Key> _callbacks;
 
+        public Vector2 Movement { get; private set; }
+
         public InputManagement()
         {
             _callbacks = new Dictionary<Keys, Key>();
@@ -20,10 +22,24 @@ namespace MonoGameJam4.Engine.Input
         {
             KeyboardState keyboardState = Keyboard.GetState();
 
+            CalculateMovement(keyboardState);
+
             foreach (Key callback in _callbacks.Values.ToArray())
             {
                 callback.Update(keyboardState);
             }
+        }
+
+        private void CalculateMovement(KeyboardState keyboardState)
+        {
+            Vector2 movement = Vector2.Zero;
+
+            if (keyboardState.IsKeyDown(Keys.W)) movement.X += 1;
+            if (keyboardState.IsKeyDown(Keys.S)) movement.X -= 1;
+            if (keyboardState.IsKeyDown(Keys.A)) movement.Y -= 1;
+            if (keyboardState.IsKeyDown(Keys.D)) movement.Y += 1;
+
+            Movement = movement;
         }
 
         public Key GetCallback(Keys keys)

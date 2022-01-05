@@ -10,8 +10,11 @@ namespace MonoGameJam4.Engine
         public Transform Transform { get; set; }
         public string Name { get; set; }
 
-        public GameObject(Transform transform, string name)
+        protected GameCenter GameCenter;
+
+        public GameObject(GameCenter gameCenter, Transform transform, string name)
         {
+            GameCenter = gameCenter;
             Transform = transform;
             Name = name;
         }

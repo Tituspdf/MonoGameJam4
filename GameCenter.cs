@@ -20,7 +20,7 @@ namespace MonoGameJam4
 
         private EngineObject[] _engineClasses;
         private InputManagement _inputManagement;
-        private ContentLoader _contentLoader;
+        public ContentLoader ContentLoader;
 
         private List<GameObject> _gameObjects;
         public Camera Camera;
@@ -42,7 +42,7 @@ namespace MonoGameJam4
 
         protected override void Initialize()
         {
-            _contentLoader = new ContentLoader();            
+            ContentLoader = new ContentLoader();            
             
             _gameObjects = new List<GameObject>();
 
@@ -58,7 +58,7 @@ namespace MonoGameJam4
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _contentLoader.LoadContend(Content);
+            ContentLoader.LoadContend(Content);
         }
 
         protected override void Update(GameTime gameTime)

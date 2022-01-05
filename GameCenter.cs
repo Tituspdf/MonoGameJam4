@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -15,6 +16,7 @@ namespace MonoGameJam4
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        public event Action Rendered;
 
         private EngineObject[] _engineClasses;
         private InputManagement _inputManagement;
@@ -78,9 +80,9 @@ namespace MonoGameJam4
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Gray);
-
-            // TODO: Add your drawing code here
-
+            
+            Rendered?.Invoke();
+            
             base.Draw(gameTime);
         }
     }

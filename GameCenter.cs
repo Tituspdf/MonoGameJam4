@@ -22,7 +22,7 @@ namespace MonoGameJam4
         private readonly EngineObject[] _engineClasses;
         private readonly InputManagement _inputManagement;
         public ContentLoader ContentLoader;
-        public Window Window { get; private set; }
+        public Window GameWindow { get; private set; }
 
         private List<GameObject> _gameObjects;
         public Camera Camera;
@@ -36,13 +36,13 @@ namespace MonoGameJam4
             IsMouseVisible = true;
             
             _inputManagement = new InputManagement();
-            Window = new Window(_graphics);
+            GameWindow = new Window(_graphics);
 
             _engineClasses = new EngineObject[]
             {
                 _inputManagement,
                 new Time(),
-                Window
+                GameWindow
             };
         }
 

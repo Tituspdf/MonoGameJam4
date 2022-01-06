@@ -11,7 +11,7 @@ namespace MonoGameJam4.Engine.Rendering
         private readonly string _textureName;
         private readonly Transform _transform;
         private readonly Camera _camera;
-        private Window _window;
+        private readonly Window _window;
 
         public Renderer(GameObject gameObject, string textureName) : base(gameObject)
         {

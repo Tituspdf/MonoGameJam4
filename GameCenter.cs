@@ -42,7 +42,8 @@ namespace MonoGameJam4
             {
                 InputManagement,
                 new Time(),
-                GameWindow
+                GameWindow,
+                new Time()
             };
         }
 

@@ -6,3 +6,6 @@ transform, camera, engine object, game object, time class, update loop
 
 Day 02
 renderer class, window class, render variables, render event, component class, variables to gameobject class, subscribed to the render event, movement vector, content loader, first player
+
+Day 03
+made the render functional, mix-up input clear, first player movement

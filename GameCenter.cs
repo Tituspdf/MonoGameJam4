@@ -20,7 +20,7 @@ namespace MonoGameJam4
         public event Action Rendered;
 
         private readonly EngineObject[] _engineClasses;
-        private readonly InputManagement _inputManagement;
+        public InputManagement InputManagement { get; private set; }
         public ContentLoader ContentLoader;
         public Window GameWindow { get; private set; }
 
@@ -35,12 +35,12 @@ namespace MonoGameJam4
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
             
-            _inputManagement = new InputManagement();
+            InputManagement = new InputManagement();
             GameWindow = new Window(_graphics);
 
             _engineClasses = new EngineObject[]
             {
-                _inputManagement,
+                InputManagement,
                 new Time(),
                 GameWindow
             };
@@ -55,7 +55,7 @@ namespace MonoGameJam4
             Camera = new Camera(this, new Transform(Vector2.Zero, Vector2.Zero), "Camera");
             _gameObjects.Add(Camera);
 
-            _inputManagement.GetCallback(Keys.Space).Invoked += () => { Debug.LogError("Hello World"); };
+            InputManagement.GetCallback(Keys.Space).Invoked += () => { Debug.LogError("Hello World"); };
 
             base.Initialize();
         }

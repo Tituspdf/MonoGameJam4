@@ -7,6 +7,7 @@ namespace MonoGameJam4.Engine.Rendering
         private GraphicsDeviceManager _graphics;
 
         public Vector2 ScreenSize { get; private set; }
+        public Vector2 ScreenMiddlePoint => ScreenSize / 2;
 
         public Window(GraphicsDeviceManager graphics)
         {

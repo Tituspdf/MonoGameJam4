@@ -35,6 +35,8 @@ namespace MonoGameJam4.Engine.Rendering
             relativePosition *= _camera.Zoom * _camera.PixelsPerUnit;
             // move the origin point to the bottom left of the sprite
             relativePosition.Y -= size.Y;
+            // fix direction
+            relativePosition.Y *= -1;
             // align the position relative to the screen center
             relativePosition += _window.ScreenMiddlePoint;
             // draw the sprite

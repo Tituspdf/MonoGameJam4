@@ -17,7 +17,7 @@ namespace MonoGameJam4.Engine
         {
             base.Update(gameTime);
 
-            FixedDeltaTime = gameTime.ElapsedGameTime.Seconds;
+            FixedDeltaTime = (float) gameTime.ElapsedGameTime.TotalSeconds;
             DeltaTime = FixedDeltaTime * Scale;
         }
     }

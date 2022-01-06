@@ -33,10 +33,10 @@ namespace MonoGameJam4.Engine.Input
         {
             Vector2 movement = Vector2.Zero;
 
-            if (keyboardState.IsKeyDown(Keys.W)) movement.X += 1;
-            if (keyboardState.IsKeyDown(Keys.S)) movement.X -= 1;
-            if (keyboardState.IsKeyDown(Keys.A)) movement.Y -= 1;
-            if (keyboardState.IsKeyDown(Keys.D)) movement.Y += 1;
+            if (keyboardState.IsKeyDown(Keys.W)) movement.Y += 1;
+            if (keyboardState.IsKeyDown(Keys.S)) movement.Y -= 1;
+            if (keyboardState.IsKeyDown(Keys.A)) movement.X -= 1;
+            if (keyboardState.IsKeyDown(Keys.D)) movement.X += 1;
 
             Movement = movement;
         }

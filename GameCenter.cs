@@ -108,5 +108,18 @@ namespace MonoGameJam4
             SpriteBatch.End();
             base.Draw(gameTime);
         }
+
+        public GameObject[] GetColliders(EntityType type)
+        {
+            switch (type)
+            {
+                case EntityType.Actor:
+                    return (GameObject[]) _gameObjects.Where(a => a.GetType() == typeof(Actor) && ((Actor) a).Colliding);
+                case EntityType.Solid:
+                    throw new NotImplementedException("Solid collision is not implemented yet");
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+        }
     }
 }

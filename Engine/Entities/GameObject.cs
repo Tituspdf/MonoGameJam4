@@ -7,6 +7,7 @@ namespace MonoGameJam4.Engine.Entities
 {
     public class GameObject : IUpdateable, IPositionable
     {
+        /// <summary> represents the world position of the object. should only be modified throughout the derived classes methods </summary>
         public Transform Transform { get; set; }
         public string Name { get; set; }
 

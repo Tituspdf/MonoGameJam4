@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGameJam4.Engine;
 using MonoGameJam4.Engine.Debugging;
+using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.Input;
 using MonoGameJam4.Engine.Rendering;
 using MonoGameJam4.Engine.WorldSpace;

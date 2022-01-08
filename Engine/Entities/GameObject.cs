@@ -3,7 +3,7 @@ using MonoGameJam4.Engine.Interfaces;
 using MonoGameJam4.Engine.WorldSpace;
 using IUpdateable = MonoGameJam4.Engine.Interfaces.IUpdateable;
 
-namespace MonoGameJam4.Engine
+namespace MonoGameJam4.Engine.Entities
 {
     public class GameObject : IUpdateable, IPositionable
     {

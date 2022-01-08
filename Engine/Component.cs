@@ -1,4 +1,6 @@
-﻿namespace MonoGameJam4.Engine
+﻿using MonoGameJam4.Engine.Entities;
+
+namespace MonoGameJam4.Engine
 {
     public class Component
     {

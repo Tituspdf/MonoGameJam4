@@ -9,3 +9,9 @@ renderer class, window class, render variables, render event, component class, v
 
 Day 03
 made the render functional, mix-up input clear, first player movement
+
+Day 04
+took some time off but did a little bit research for collision systems
+
+day 05
+started implementing actors and solids

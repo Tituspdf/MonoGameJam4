@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.WorldSpace;
 
 namespace MonoGameJam4.Engine.Entities

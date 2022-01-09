@@ -31,9 +31,21 @@ namespace MonoGameJam4.Engine.Entities
             Transform.Position += move;
         }
 
-        private void MoveY(float amount, Action onCollision)
+        private void MoveY(float amount, Action<CollidingObject> onCollision)
         {
+            if (amount == 0) return;
+
+            Vector2 move = new Vector2(0, amount);
             
+            foreach (GameObject o in GameCenter.GetColliders(EntityType.Actor))
+            {
+                Actor actor = (Actor) o;
+                if (!CheckCollision(Transform.Moved(move), actor.Transform)) continue;
+                onCollision?.Invoke(actor);
+                return;
+            }
+
+            Transform.Position += move;
         }
     }
 }

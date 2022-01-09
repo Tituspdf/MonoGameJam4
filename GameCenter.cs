@@ -116,7 +116,15 @@ namespace MonoGameJam4
             switch (type)
             {
                 case EntityType.Actor:
-                    return (GameObject[]) _gameObjects.Where(a => a.GetType() == typeof(Actor) && ((Actor) a).Colliding);
+                {
+                    List<Actor> actors = new List<Actor>();
+                    foreach (GameObject gameObject in _gameObjects)
+                    {
+                        if (gameObject is Actor {Colliding: true} actor) actors.Add(actor);
+                    }
+
+                    return actors.ToArray();
+                }
                 case EntityType.Solid:
                     throw new NotImplementedException("Solid collision is not implemented yet");
                 default:

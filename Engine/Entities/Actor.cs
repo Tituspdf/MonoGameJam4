@@ -4,7 +4,7 @@ using MonoGameJam4.Engine.WorldSpace;
 
 namespace MonoGameJam4.Engine.Entities
 {
-    public class Actor : GameObject
+    public class Actor : CollidingObject
     {
         public bool Colliding;
         

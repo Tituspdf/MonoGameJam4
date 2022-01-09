@@ -8,12 +8,12 @@ using MonoGameJam4.Engine.WorldSpace;
 
 namespace MonoGameJam4.GameContent.Entities
 {
-    public class Player : GameObject, IRendering
+    public class Player : Actor, IRendering
     {
         public Renderer Renderer { get; set; }
         private InputManagement _input;
         
-        public Player(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name)
+        public Player(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name, true)
         {
             Renderer = new Renderer(this, "Player");
             _input = gameCenter.InputManagement;

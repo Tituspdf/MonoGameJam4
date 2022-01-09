@@ -103,7 +103,7 @@ namespace MonoGameJam4
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Gray);
+            GraphicsDevice.Clear(Color.Black);
             
             SpriteBatch.Begin();
             Rendered?.Invoke();

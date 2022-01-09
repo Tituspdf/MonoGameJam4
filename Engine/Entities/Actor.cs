@@ -14,7 +14,7 @@ namespace MonoGameJam4.Engine.Entities
             Colliding = colliding;
         }
 
-        private void MoveX(float amount, Action<CollidingObject> onCollision)
+        public void MoveX(float amount, Action<CollidingObject> onCollision)
         {
             if (amount == 0) return;
 
@@ -31,7 +31,7 @@ namespace MonoGameJam4.Engine.Entities
             Transform.Position += move;
         }
 
-        private void MoveY(float amount, Action<CollidingObject> onCollision)
+        public void MoveY(float amount, Action<CollidingObject> onCollision)
         {
             if (amount == 0) return;
 

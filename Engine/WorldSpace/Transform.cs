@@ -12,5 +12,10 @@ namespace MonoGameJam4.Engine.WorldSpace
             Position = position;
             Scale = scale;
         }
+                
+        public Transform Moved(Vector2 amount)
+        {
+            return new Transform(Position + amount, Scale);
+        }
     }
 }

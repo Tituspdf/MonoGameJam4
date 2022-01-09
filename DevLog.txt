@@ -15,3 +15,6 @@ took some time off but did a little bit research for collision systems
 
 day 05
 started implementing actors and solids
+
+day 06 
+created collision system for actors 

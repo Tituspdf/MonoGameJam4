@@ -34,14 +34,15 @@ namespace MonoGameJam4.Engine.Rendering
             Vector2 relativePosition = _transform.Position - _camera.Transform.Position;
             // convert the position into pixel space
             relativePosition *= _camera.Zoom * _camera.PixelsPerUnit;
-            // move the origin point to the bottom left of the sprite
-            relativePosition.Y -= size.Y;
             // fix direction
             relativePosition.Y *= -1;
             // align the position relative to the screen center
             relativePosition += _window.ScreenMiddlePoint;
             // draw the sprite
-            _spriteBatch.Draw(_texture, new Rectangle((int)relativePosition.X, (int)relativePosition.Y,(int)size.X, (int)size.Y), Color.White);
+            Vector2 origin = _texture.Bounds.Center.ToVector2();
+            float rotation = _transform.Rotation;
+            Rectangle destinationRectangle = new Rectangle((int) (relativePosition.X), (int) (relativePosition.Y), (int) size.X, (int) size.Y);
+            _spriteBatch.Draw(_texture, destinationRectangle, null, Color.White, rotation, origin, SpriteEffects.None, 1);
         }
     }
 }

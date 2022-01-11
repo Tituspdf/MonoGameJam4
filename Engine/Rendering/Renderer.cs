@@ -41,6 +41,7 @@ namespace MonoGameJam4.Engine.Rendering
             
             Vector2 origin = _texture.Bounds.Center.ToVector2();
             
+            // hint: the renderer takes the rotation as degrees
             float rotation = _transform.Rotation;
             
             Rectangle destinationRectangle = new Rectangle((int) (relativePosition.X), (int) (relativePosition.Y), (int) size.X, (int) size.Y);

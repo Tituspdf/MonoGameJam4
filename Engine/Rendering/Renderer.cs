@@ -38,10 +38,13 @@ namespace MonoGameJam4.Engine.Rendering
             relativePosition.Y *= -1;
             // align the position relative to the screen center
             relativePosition += _window.ScreenMiddlePoint;
-            // draw the sprite
+            
             Vector2 origin = _texture.Bounds.Center.ToVector2();
+            
             float rotation = _transform.Rotation;
+            
             Rectangle destinationRectangle = new Rectangle((int) (relativePosition.X), (int) (relativePosition.Y), (int) size.X, (int) size.Y);
+            
             _spriteBatch.Draw(_texture, destinationRectangle, null, Color.White, rotation, origin, SpriteEffects.None, 1);
         }
     }

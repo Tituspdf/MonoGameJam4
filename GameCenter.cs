@@ -107,6 +107,7 @@ namespace MonoGameJam4
             
             SpriteBatch.Begin();
             Rendered?.Invoke();
+            // SpriteBatch.Draw(Content.Load<Texture2D>("Square"), new Rectangle(GameWindow.ScreenMiddlePoint.ToPoint(), (Vector2.One * 2).ToPoint()), Color.Green);
             SpriteBatch.End();
             base.Draw(gameTime);
         }

@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using MonoGameJam4.Engine;
 using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Entities;
@@ -27,6 +29,10 @@ namespace MonoGameJam4.GameContent.Entities
             
             MoveX(move.X, delegate(CollidingObject o) { Debug.Log(o.Name); });
             MoveY(move.Y, delegate(CollidingObject o) { Debug.Log(o.Name); });
+
+            Vector2 lookDir = GameCenter.Camera.ScreenToWorldPosition() - Transform.Position;
+            float angle = (float) Math.Atan2(lookDir.Y, lookDir.X) * (180 / (float) Math.PI) - 90f;
+            Debug.Log(angle);
         }
     }
 }

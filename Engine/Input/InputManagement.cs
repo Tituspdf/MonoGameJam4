@@ -12,6 +12,8 @@ namespace MonoGameJam4.Engine.Input
 
         public Vector2 Movement { get; private set; }
 
+        public Vector2 MousePosition => Mouse.GetState().Position.ToVector2();
+
         public InputManagement()
         {
             _callbacks = new Dictionary<Keys, Key>();

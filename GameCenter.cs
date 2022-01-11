@@ -26,9 +26,9 @@ namespace MonoGameJam4
         public InputManagement InputManagement { get; private set; }
         public ContentLoader ContentLoader;
         public Window GameWindow { get; private set; }
-
-        private List<GameObject> _gameObjects;
         public Camera Camera;
+        
+        private List<GameObject> _gameObjects;
 
         private bool _hasStarted;
         

@@ -56,7 +56,7 @@ namespace MonoGameJam4
             
             _gameObjects = new List<GameObject>();
 
-            Camera = new Camera(this, new Transform(Vector2.Zero, Vector2.Zero), "Camera", GameWindow);
+            Camera = new Camera(this, new Transform(Vector2.Zero, Vector2.Zero, 0), "Camera", GameWindow);
             _gameObjects.Add(Camera);
 
             InputManagement.GetCallback(Keys.Space).Invoked += () => { Debug.LogError("Hello World"); };
@@ -66,7 +66,7 @@ namespace MonoGameJam4
 
         private void Start()
         {
-            _gameObjects.Add(new Player(this, new Transform(Vector2.Zero, Vector2.One), "Player"));
+            _gameObjects.Add(new Player(this, new Transform(Vector2.Zero, Vector2.One, 0), "Player"));
         }
 
         protected override void LoadContent()

@@ -44,7 +44,6 @@ namespace MonoGameJam4
             _engineClasses = new EngineObject[]
             {
                 InputManagement,
-                new Time(),
                 GameWindow,
                 new Time()
             };

@@ -18,8 +18,9 @@ namespace MonoGameJam4.Engine.Rendering
         public Vector2 ScreenToWorldPosition()
         {
             Vector2 mousePosition = GameCenter.InputManagement.MousePosition;
-            
+            mousePosition = _window.ScreenMiddlePoint - mousePosition;
             mousePosition /= PixelsPerUnit;
+            mousePosition.X *= -1f;
             return mousePosition + Transform.Position;
         }
     }

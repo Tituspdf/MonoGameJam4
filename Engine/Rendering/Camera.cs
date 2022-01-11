@@ -8,15 +8,17 @@ namespace MonoGameJam4.Engine.Rendering
     {
         public float Zoom = 1;
         public int PixelsPerUnit = 50;
+        private Window _window;
         
-        public Camera(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name)
+        public Camera(GameCenter gameCenter, Transform transform, string name, Window window) : base(gameCenter, transform, name)
         {
-            
+            _window = window;
         }
 
         public Vector2 ScreenToWorldPosition()
         {
             Vector2 mousePosition = GameCenter.InputManagement.MousePosition;
+            
             mousePosition /= PixelsPerUnit;
             return mousePosition + Transform.Position;
         }

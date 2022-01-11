@@ -1,4 +1,5 @@
-﻿using MonoGameJam4.Engine.Entities;
+﻿using Microsoft.Xna.Framework;
+using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.WorldSpace;
 
 namespace MonoGameJam4.Engine.Rendering
@@ -11,6 +12,13 @@ namespace MonoGameJam4.Engine.Rendering
         public Camera(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name)
         {
             
+        }
+
+        public Vector2 ScreenToWorldPosition()
+        {
+            Vector2 mousePosition = GameCenter.InputManagement.MousePosition;
+            mousePosition /= PixelsPerUnit;
+            return mousePosition + Transform.Position;
         }
     }
 }

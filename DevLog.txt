@@ -26,4 +26,4 @@ day 08 - 11.01.2022
 transform and render classes can now rotate
 
 Day 09 - 12.01.2022
-added mouse input support
+added mouse input support, screen distance to world distance, border, box

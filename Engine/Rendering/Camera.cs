@@ -15,13 +15,12 @@ namespace MonoGameJam4.Engine.Rendering
             _window = window;
         }
 
-        public Vector2 ScreenToWorldPosition()
+        public Vector2 ScreenToWorldPosition(Vector2 pos)
         {
-            Vector2 mousePosition = GameCenter.InputManagement.MousePosition;
-            mousePosition = _window.ScreenMiddlePoint - mousePosition;
-            mousePosition /= PixelsPerUnit;
-            mousePosition.X *= -1f;
-            return mousePosition + Transform.Position;
+            pos = _window.ScreenMiddlePoint - pos;
+            pos /= PixelsPerUnit;
+            pos.X *= -1f;
+            return pos + Transform.Position;
         }
     }
 }

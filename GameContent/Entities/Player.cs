@@ -35,7 +35,7 @@ namespace MonoGameJam4.GameContent.Entities
             MoveX(move.X, delegate { });
             MoveY(move.Y, delegate { });
 
-            Vector2 lookDir = GameCenter.Camera.ScreenToWorldPosition() - Transform.Position;
+            Vector2 lookDir = GameCenter.Camera.ScreenToWorldPosition(_input.MousePosition) - Transform.Position;
             float angle = (float) Math.Atan2(-lookDir.Y, lookDir.X) + MathHelper.ToRadians(90); 
             Transform.Rotation = angle;
         }

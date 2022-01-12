@@ -16,6 +16,7 @@ namespace MonoGameJam4.Engine.Rendering
         public void LoadContend(ContentManager contentManager)
         {
             Textures.Add("Player", contentManager.Load<Texture2D>("Triangle"));
+            Textures.Add("Square", contentManager.Load<Texture2D>("Square"));
         }
     }
 }

@@ -20,6 +20,12 @@ namespace MonoGameJam4.GameContent.Entities
         {
             Renderer = new Renderer(this, "Player");
             _input = gameCenter.InputManagement;
+            _input.GetCallbackMouse(MouseElement.LeftButton).Invoked += OnMouse;
+        }
+
+        private void OnMouse()
+        {
+            
         }
 
         public override void Update(GameTime gameTime)

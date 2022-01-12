@@ -18,3 +18,9 @@ started implementing actors and solids
 
 day 06 
 created collision system for actors 
+
+day 07 - 10.01
+day off
+
+day 08 - 11.01.2022
+transform and render classes can now rotate

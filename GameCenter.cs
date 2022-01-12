@@ -26,8 +26,8 @@ namespace MonoGameJam4
         public ContentLoader ContentLoader;
         public Window GameWindow { get; private set; }
         public Camera Camera;
-        
-        private List<GameObject> _gameObjects;
+
+        public List<GameObject> GameObjects;
 
         private bool _hasStarted;
         
@@ -52,10 +52,10 @@ namespace MonoGameJam4
         {
             ContentLoader = new ContentLoader();            
             
-            _gameObjects = new List<GameObject>();
+            GameObjects = new List<GameObject>();
 
             Camera = new Camera(this, new Transform(Vector2.Zero, Vector2.Zero, 0), "Camera", GameWindow);
-            _gameObjects.Add(Camera);
+            GameObjects.Add(Camera);
 
             InputManagement.GetCallback(Keys.Space).Invoked += () => { Debug.LogError("Hello World"); };
 
@@ -64,8 +64,8 @@ namespace MonoGameJam4
 
         private void Start()
         {
-            _gameObjects.Add(new Player(this, new Transform(Vector2.Zero, Vector2.One, 0), "Player"));
-            _gameObjects.Add(new Box(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "box", true, "Square"));
+            GameObjects.Add(new Player(this, new Transform(Vector2.Zero, Vector2.One, 0), "Player"));
+            GameObjects.Add(new Box(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "box", true, "Square"));
         }
 
         protected override void LoadContent()
@@ -92,7 +92,7 @@ namespace MonoGameJam4
                 element.Update(gameTime);
             }
 
-            foreach (GameObject gameObject in _gameObjects)
+            foreach (GameObject gameObject in GameObjects)
             {
                 gameObject.Update(gameTime);
             }
@@ -118,7 +118,7 @@ namespace MonoGameJam4
                 case EntityType.Actor:
                 {
                     List<Actor> actors = new List<Actor>();
-                    foreach (GameObject gameObject in _gameObjects)
+                    foreach (GameObject gameObject in GameObjects)
                     {
                         if (gameObject is Actor {Colliding: true} actor) actors.Add(actor);
                     }

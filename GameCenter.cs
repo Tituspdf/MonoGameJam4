@@ -66,6 +66,7 @@ namespace MonoGameJam4
         private void Start()
         {
             _gameObjects.Add(new Player(this, new Transform(Vector2.Zero, Vector2.One, 0), "Player"));
+            _gameObjects.Add(new Box(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "box", true, "Square"));
         }
 
         protected override void LoadContent()

@@ -22,5 +22,10 @@ namespace MonoGameJam4.Engine.Rendering
             pos.X *= -1f;
             return pos + Transform.Position;
         }
+
+        public float ScreenToWorldDistance(float f)
+        {
+            return f / PixelsPerUnit;
+        }
     }
 }

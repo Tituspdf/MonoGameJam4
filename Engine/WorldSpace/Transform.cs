@@ -8,6 +8,13 @@ namespace MonoGameJam4.Engine.WorldSpace
         public Vector2 Scale { get; set; }
         public float Rotation { get; set; }
 
+        public Transform()
+        {
+            Position = Vector2.Zero;
+            Scale = Vector2.One;
+            Rotation = 0;
+        }
+        
         public Transform(Vector2 position, Vector2 scale, float rotation)
         {
             Position = position;

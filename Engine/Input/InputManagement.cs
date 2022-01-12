@@ -9,6 +9,7 @@ namespace MonoGameJam4.Engine.Input
     public class InputManagement : EngineObject
     {
         private readonly Dictionary<Keys, Key> _callbacks;
+        private readonly Dictionary<MouseElement, MouseButton> _mouseCallbacks;
 
         public Vector2 Movement { get; private set; }
 
@@ -17,6 +18,7 @@ namespace MonoGameJam4.Engine.Input
         public InputManagement()
         {
             _callbacks = new Dictionary<Keys, Key>();
+            _mouseCallbacks = new Dictionary<MouseElement, MouseButton>();
         }
 
         public override void Update(GameTime gameTime)
@@ -51,6 +53,13 @@ namespace MonoGameJam4.Engine.Input
             }
 
             return _callbacks[keys];
+        }
+
+        public MouseButton GetCallbackMouse(MouseElement button)
+        {
+            if (!_mouseCallbacks.ContainsKey(button)) _mouseCallbacks.Add(button, new MouseButton(button));
+
+            return _mouseCallbacks[button];
         }
     }
 

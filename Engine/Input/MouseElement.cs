@@ -1,6 +1,6 @@
 ﻿namespace MonoGameJam4.Engine.Input
 {
-    public enum MousePart
+    public enum MouseElement
     {
         LeftButton,
         RightButton

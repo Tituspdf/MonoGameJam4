@@ -75,4 +75,33 @@ namespace MonoGameJam4.Engine.Input
             _isPressed = state;
         }
     }
+
+    public class MouseButton
+    {
+        private readonly MouseElement _element;
+        private bool _isPressed;
+        
+        public event Action Invoked;
+
+        public MouseButton(MouseElement element)
+        {
+            _element = element;
+        }
+
+        public void Update(MouseState mouseState)
+        {
+            ButtonState state = _element switch
+            {
+                MouseElement.LeftButton => mouseState.LeftButton,
+                MouseElement.RightButton => mouseState.RightButton,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+
+            if (!_isPressed && state == ButtonState.Pressed)
+            {
+                Invoked?.Invoke();
+                _isPressed = true;
+            }
+        }
+    }
 }

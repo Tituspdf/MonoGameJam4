@@ -6,9 +6,9 @@ using MonoGameJam4.GameContent.Entities;
 
 namespace MonoGameJam4.GameContent
 {
-    public class WorldBounds : GameObject
+    public class WorldBorder : GameObject
     {
-        public WorldBounds(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name)
+        public WorldBorder(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name)
         {
             const float thickness = 0.5f;
 

@@ -10,7 +10,7 @@ using MonoGameJam4.Engine.WorldSpace;
 
 namespace MonoGameJam4.GameContent.Entities
 {
-    public class Player : Actor, IRendering
+    public class Player : WorldObject, IRendering
     {
         public Renderer Renderer { get; set; }
         private InputManagement _input;

@@ -5,7 +5,7 @@ using MonoGameJam4.Engine.WorldSpace;
 
 namespace MonoGameJam4.GameContent.Entities
 {
-    public class Bullet : Actor
+    public class Bullet : WorldObject
     {
         private Vector2 _velocity;
         public Bullet(GameCenter gameCenter, Transform transform, string name, bool colliding, Vector2 velocity) : base(gameCenter, transform, name, colliding)

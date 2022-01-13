@@ -6,11 +6,11 @@ using MonoGameJam4.Engine.WorldSpace;
 
 namespace MonoGameJam4.Engine.Entities
 {
-    public class Actor : CollidingObject
+    public class WorldObject : CollidingObject
     {
         public bool Colliding;
 
-        public Actor(GameCenter gameCenter, Transform transform, string name, bool colliding) : base(gameCenter,
+        public WorldObject(GameCenter gameCenter, Transform transform, string name, bool colliding) : base(gameCenter,
             transform, name)
         {
             Colliding = colliding;
@@ -24,10 +24,10 @@ namespace MonoGameJam4.Engine.Entities
 
             foreach (GameObject o in GameCenter.GetColliders(EntityType.Actor))
             {
-                Actor actor = (Actor) o;
-                if (actor == this) continue;
-                if (!CheckCollision(Transform.Moved(move), actor.Transform)) continue;
-                onCollision?.Invoke(actor);
+                WorldObject worldObject = (WorldObject) o;
+                if (worldObject == this) continue;
+                if (!CheckCollision(Transform.Moved(move), worldObject.Transform)) continue;
+                onCollision?.Invoke(worldObject);
                 return;
             }
 
@@ -42,10 +42,10 @@ namespace MonoGameJam4.Engine.Entities
 
             foreach (GameObject o in GameCenter.GetColliders(EntityType.Actor))
             {
-                Actor actor = (Actor) o;
-                if (actor == this) continue;
-                if (!CheckCollision(Transform.Moved(move), actor.Transform)) continue;
-                onCollision?.Invoke(actor);
+                WorldObject worldObject = (WorldObject) o;
+                if (worldObject == this) continue;
+                if (!CheckCollision(Transform.Moved(move), worldObject.Transform)) continue;
+                onCollision?.Invoke(worldObject);
                 return;
             }
 

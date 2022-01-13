@@ -119,10 +119,10 @@ namespace MonoGameJam4
             {
                 case EntityType.Actor:
                 {
-                    List<Actor> actors = new List<Actor>();
+                    List<WorldObject> actors = new List<WorldObject>();
                     foreach (GameObject gameObject in GameObjects)
                     {
-                        if (gameObject is Actor {Colliding: true} actor) actors.Add(actor);
+                        if (gameObject is WorldObject {Colliding: true} actor) actors.Add(actor);
                     }
 
                     return actors.ToArray();

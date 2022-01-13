@@ -4,7 +4,7 @@ using MonoGameJam4.Engine.WorldSpace;
 
 namespace MonoGameJam4.GameContent.Entities
 {
-    public class Box : Actor
+    public class Box : WorldObject
     {
         private Renderer _renderer;
         

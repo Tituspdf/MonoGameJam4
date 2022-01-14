@@ -15,23 +15,21 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
     public class ParticleSystem : GameObject, IRenderCall
     {
         private readonly Random _random;
-        public Vector2 EmitterLocation { get; set; }
-        private List<Particle> particles;
-        private List<Texture2D> textures;
+        private List<Particle> _particles;
+        private List<Texture2D> _textures;
 
-        public ParticleSystem(GameCenter gameCenter, Transform transform, string name, List<Texture2D> textures,
-            Vector2 location) : base(gameCenter, transform, name)
+        public ParticleSystem(GameCenter gameCenter, Transform transform, string name, List<Texture2D> textures) : base(
+            gameCenter, transform, name)
         {
-            EmitterLocation = location;
-            this.textures = textures;
-            this.particles = new List<Particle>();
+            _textures = textures;
+            _particles = new List<Particle>();
             _random = new Random();
         }
 
         private Particle GenerateNewParticle()
         {
-            Texture2D texture = textures[_random.Next(textures.Count)];
-            Vector2 position = EmitterLocation;
+            Texture2D texture = _textures[_random.Next(_textures.Count)];
+            Vector2 position = Transform.Position;
             Vector2 velocity = new Vector2(
                 1f * (float) (_random.NextDouble() * 2 - 1),
                 1f * (float) (_random.NextDouble() * 2 - 1));
@@ -50,20 +48,20 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-        
+
             int total = 10;
 
             for (int i = 0; i < total; i++)
             {
-                particles.Add(GenerateNewParticle());
+                _particles.Add(GenerateNewParticle());
             }
 
-            for (int particle = 0; particle < particles.Count; particle++)
+            for (int particle = 0; particle < _particles.Count; particle++)
             {
-                particles[particle].Update();
-                if (particles[particle].TTL <= 0)
+                _particles[particle].Update();
+                if (_particles[particle].TTL <= 0)
                 {
-                    particles.RemoveAt(particle);
+                    _particles.RemoveAt(particle);
                     particle--;
                 }
             }
@@ -72,9 +70,9 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
         public void Render(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
-            for (int index = 0; index < particles.Count; index++)
+            for (int index = 0; index < _particles.Count; index++)
             {
-                particles[index].Draw(spriteBatch);
+                _particles[index].Draw(spriteBatch);
             }
 
             spriteBatch.End();

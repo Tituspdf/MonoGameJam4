@@ -11,7 +11,7 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
     /// </summary>
     public class ParticleSystem
     {
-        private Random random;
+        private readonly Random _random;
         public Vector2 EmitterLocation { get; set; }
         private List<Particle> particles;
         private List<Texture2D> textures;
@@ -21,24 +21,24 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
             EmitterLocation = location;
             this.textures = textures;
             this.particles = new List<Particle>();
-            random = new Random();
+            _random = new Random();
         }
         
         private Particle GenerateNewParticle()
         {
-            Texture2D texture = textures[random.Next(textures.Count)];
+            Texture2D texture = textures[_random.Next(textures.Count)];
             Vector2 position = EmitterLocation;
             Vector2 velocity = new Vector2(
-                1f * (float)(random.NextDouble() * 2 - 1),
-                1f * (float)(random.NextDouble() * 2 - 1));
+                1f * (float)(_random.NextDouble() * 2 - 1),
+                1f * (float)(_random.NextDouble() * 2 - 1));
             float angle = 0;
-            float angularVelocity = 0.1f * (float)(random.NextDouble() * 2 - 1);
+            float angularVelocity = 0.1f * (float)(_random.NextDouble() * 2 - 1);
             Color color = new Color(
-                (float)random.NextDouble(),
-                (float)random.NextDouble(),
-                (float)random.NextDouble());
-            float size = (float)random.NextDouble();
-            int ttl = 20 + random.Next(40);
+                (float)_random.NextDouble(),
+                (float)_random.NextDouble(),
+                (float)_random.NextDouble());
+            float size = (float)_random.NextDouble();
+            int ttl = 20 + _random.Next(40);
  
             return new Particle(texture, position, velocity, angle, angularVelocity, color, size, ttl);
         }

@@ -63,7 +63,7 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
             float angle = 0;
 
             return new Particle(new Transform(position, _data.Size, angle), _data.Texture, velocity,
-                _data.Color, _data.LifeTime);
+                _data.Color);
         }
 
         public override void Update(GameTime gameTime)
@@ -73,7 +73,7 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
             for (int particle = 0; particle < _particles.Count; particle++)
             {
                 _particles[particle].Update();
-                if (_particles[particle].LiveTime <= 0)
+                if (_particles[particle].LiveTime >= _data.LifeTime)
                 {
                     _particles.RemoveAt(particle);
                     particle--;

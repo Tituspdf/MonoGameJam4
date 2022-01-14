@@ -95,7 +95,7 @@ namespace MonoGameJam4
                 element.Update(gameTime);
             }
 
-            foreach (GameObject gameObject in GameObjects)
+            foreach (GameObject gameObject in GameObjects.ToArray())
             {
                 gameObject.Update(gameTime);
             }

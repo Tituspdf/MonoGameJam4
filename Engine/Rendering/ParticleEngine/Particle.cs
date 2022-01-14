@@ -11,16 +11,17 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
     public class Particle : IPositionable
     {
         public Transform Transform { get; set; }
-        
-        private readonly Texture2D _texture;   // The texture that will be drawn to represent the particle
-        private Vector2 Velocity;       // The speed of the particle at the current instance
-        private float AngularVelocity;  // The speed that the angle is changing
+
+        private readonly Texture2D _texture; // The texture that will be drawn to represent the particle
+        private Vector2 Velocity; // The speed of the particle at the current instance
+        private float AngularVelocity; // The speed that the angle is changing
+
         /// <summary>the color of the particle</summary>
-        private readonly Color _color;               // The size of the particle
-        public int LiveTime { get; set; }                // The 'time to live' of the particle
-        
-        public Particle(Transform transform, Texture2D texture, Vector2 velocity,
-                    float angularVelocity, Color color, int liveTime)
+        private readonly Color _color; // The size of the particle
+
+        public int LiveTime { get; set; } // The 'time to live' of the particle
+
+        public Particle(Transform transform, Texture2D texture, Vector2 velocity, float angularVelocity, Color color, int liveTime)
         {
             Transform = transform;
             _texture = texture;

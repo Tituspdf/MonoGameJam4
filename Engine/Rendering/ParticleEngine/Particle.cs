@@ -23,9 +23,9 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
         /// <summary>the color of the particle</summary>
         private readonly Color _color; 
 
-        public int LiveTime { get; set; } // The 'time to live' of the particle
+        public float LiveTime { get; set; } // The 'time to live' of the particle
 
-        public Particle(Transform transform, Texture2D texture, Vector2 velocity, float angularVelocity, Color color, int liveTime)
+        public Particle(Transform transform, Texture2D texture, Vector2 velocity, float angularVelocity, Color color, float liveTime)
         {
             Transform = transform;
             _texture = texture;
@@ -37,7 +37,7 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
 
         public void Update()
         {
-            LiveTime--;
+            LiveTime -= Time.DeltaTime;
             Transform.Position += _velocity * Time.DeltaTime;
             Transform.Rotation += _angularVelocity * Time.DeltaTime;
         }

@@ -74,7 +74,7 @@ namespace MonoGameJam4
             GameObjects.Add(new ParticleSystem(this, new Transform(), "ParticleSystem", new List<Texture2D>()
             {
                 ContentLoader.Textures["Point"]
-            }));
+            }, Color.White));
         }
 
         protected override void LoadContent()

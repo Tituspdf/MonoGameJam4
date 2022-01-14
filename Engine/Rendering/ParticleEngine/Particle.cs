@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Interfaces;
 using MonoGameJam4.Engine.WorldSpace;
 
@@ -15,9 +16,9 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
         /// <summary> sprite for the particle </summary>
         private readonly Texture2D _texture; 
         /// <summary> speed of the particle </summary>
-        private Vector2 Velocity; 
+        private readonly Vector2 _velocity; 
         /// <summary> angle changing speed </summary>
-        private float AngularVelocity; 
+        private readonly float _angularVelocity; 
 
         /// <summary>the color of the particle</summary>
         private readonly Color _color; // The size of the particle
@@ -28,8 +29,8 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
         {
             Transform = transform;
             _texture = texture;
-            Velocity = velocity;
-            AngularVelocity = angularVelocity;
+            _velocity = velocity;
+            _angularVelocity = angularVelocity;
             _color = color;
             LiveTime = liveTime;
         }
@@ -37,8 +38,8 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
         public void Update()
         {
             LiveTime--;
-            Transform.Position += Velocity * Time.DeltaTime;
-            Transform.Rotation += AngularVelocity * Time.DeltaTime;
+            Transform.Position += _velocity * Time.DeltaTime;
+            Transform.Rotation += _angularVelocity * Time.DeltaTime;
         }
 
         public void Render(SpriteBatch spriteBatch, Camera camera, Window window)

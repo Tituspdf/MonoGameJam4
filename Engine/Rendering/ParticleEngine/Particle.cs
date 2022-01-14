@@ -12,9 +12,12 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
     {
         public Transform Transform { get; set; }
 
-        private readonly Texture2D _texture; // The texture that will be drawn to represent the particle
-        private Vector2 Velocity; // The speed of the particle at the current instance
-        private float AngularVelocity; // The speed that the angle is changing
+        /// <summary> sprite for the particle </summary>
+        private readonly Texture2D _texture; 
+        /// <summary> speed of the particle </summary>
+        private Vector2 Velocity; 
+        /// <summary> angle changing speed </summary>
+        private float AngularVelocity; 
 
         /// <summary>the color of the particle</summary>
         private readonly Color _color; // The size of the particle

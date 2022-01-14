@@ -37,7 +37,6 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
             float angle = 0;
             float angularVelocity = 0.1f * (float) (_random.NextDouble() * 2 - 1);
             float size = .2f;
-            int ttl = 20 + _random.Next(40);
 
             return new Particle(new Transform(position, new Vector2(size), angle), _texture, velocity, angularVelocity, _color, 20);
         }

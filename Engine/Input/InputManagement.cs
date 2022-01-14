@@ -24,12 +24,18 @@ namespace MonoGameJam4.Engine.Input
         public override void Update(GameTime gameTime)
         {
             KeyboardState keyboardState = Keyboard.GetState();
-
+            MouseState mouseState = Mouse.GetState();
+            
             CalculateMovement(keyboardState);
 
             foreach (Key callback in _callbacks.Values.ToArray())
             {
                 callback.Update(keyboardState);
+            }
+
+            foreach (MouseButton button in _mouseCallbacks.Values.ToArray())
+            {
+                button.Update(mouseState);
             }
         }
 
@@ -99,18 +105,18 @@ namespace MonoGameJam4.Engine.Input
 
         public void Update(MouseState mouseState)
         {
-            ButtonState state = _element switch
+            ButtonState button = _element switch
             {
                 MouseElement.LeftButton => mouseState.LeftButton,
                 MouseElement.RightButton => mouseState.RightButton,
                 _ => throw new ArgumentOutOfRangeException()
             };
 
-            if (!_isPressed && state == ButtonState.Pressed)
-            {
-                Invoked?.Invoke();
-                _isPressed = true;
-            }
+            bool state = button == ButtonState.Pressed;
+            
+            if (!_isPressed && state) Invoked?.Invoke();
+
+            _isPressed = state;
         }
     }
 }

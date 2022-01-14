@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.WorldSpace;
@@ -14,7 +15,7 @@ namespace MonoGameJam4.Engine.Rendering
         private readonly Camera _camera;
         private readonly Window _window;
         private Color _color = Color.White;
-
+        
         public Renderer(GameObject gameObject, string textureName) : base(gameObject)
         {
             _spriteBatch = gameObject.GameCenter.SpriteBatch;
@@ -27,6 +28,8 @@ namespace MonoGameJam4.Engine.Rendering
 
         private void Render()
         {
+            if (!Enabled) return;
+            
             _texture ??= GameObject.GameCenter.ContentLoader.Textures[_textureName];
 
             Vector2 size = _transform.Scale * _camera.PixelsPerUnit;

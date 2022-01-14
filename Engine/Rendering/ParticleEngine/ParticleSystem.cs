@@ -15,6 +15,7 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
     public class ParticleSystem : GameObject, IRenderCall
     {
         private readonly Random _random;
+        /// <summary> the list which keeps track of all current particles </summary>
         private List<Particle> _particles;
         private readonly Texture2D _texture;
         private readonly Color _color;

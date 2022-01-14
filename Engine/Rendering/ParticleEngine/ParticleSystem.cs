@@ -69,13 +69,10 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
 
         public void Render(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
-            for (int index = 0; index < _particles.Count; index++)
+            foreach (Particle t in _particles)
             {
-                _particles[index].Draw(spriteBatch);
+                t.Draw(spriteBatch);
             }
-
-            spriteBatch.End();
         }
     }
 }

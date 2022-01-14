@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGameJam4.Engine.Entities;
+using MonoGameJam4.Engine.Interfaces;
 using MonoGameJam4.Engine.WorldSpace;
 
 namespace MonoGameJam4.Engine.Rendering.ParticleEngine
@@ -11,7 +12,7 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
     /// particle Object
     /// based on http://rbwhitaker.wikidot.com/2d-particle-engine-1
     /// </summary>
-    public class ParticleSystem : GameObject
+    public class ParticleSystem : GameObject, IRenderCall
     {
         private readonly Random _random;
         public Vector2 EmitterLocation { get; set; }
@@ -46,8 +47,10 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
             return new Particle(texture, position, velocity, angle, angularVelocity, color, size, ttl);
         }
 
-        public void Update()
+        public override void Update(GameTime gameTime)
         {
+            base.Update(gameTime);
+        
             int total = 10;
 
             for (int i = 0; i < total; i++)
@@ -66,7 +69,7 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Render(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
             for (int index = 0; index < particles.Count; index++)

@@ -26,7 +26,7 @@ namespace MonoGameJam4.Engine.Entities
 
         public virtual void Deconstruct()
         {
-            
+            GameCenter.GameObjects.Remove(this);
         }
     }
 }

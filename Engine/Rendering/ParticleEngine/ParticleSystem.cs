@@ -42,7 +42,7 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
             float size = (float) _random.NextDouble();
             int ttl = 20 + _random.Next(40);
 
-            return new Particle(texture, position, velocity, angle, angularVelocity, color, size, ttl);
+            return new Particle(new Transform(position, new Vector2(size), angle), texture, velocity, angularVelocity, color, 5);
         }
 
         public override void Update(GameTime gameTime)

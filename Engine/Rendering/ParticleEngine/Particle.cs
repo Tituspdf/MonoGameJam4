@@ -25,12 +25,11 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
 
         public float LiveTime { get; set; } // The 'time to live' of the particle
 
-        public Particle(Transform transform, Texture2D texture, Vector2 velocity, float angularVelocity, Color color, float liveTime)
+        public Particle(Transform transform, Texture2D texture, Vector2 velocity, Color color, float liveTime)
         {
             Transform = transform;
             _texture = texture;
             _velocity = velocity;
-            _angularVelocity = angularVelocity;
             _color = color;
             LiveTime = liveTime;
         }

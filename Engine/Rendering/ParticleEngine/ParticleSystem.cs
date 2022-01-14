@@ -16,13 +16,13 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
     {
         private readonly Random _random;
         private List<Particle> _particles;
-        private List<Texture2D> _textures;
+        private readonly Texture2D _texture;
         private readonly Color _color;
 
-        public ParticleSystem(GameCenter gameCenter, Transform transform, string name, List<Texture2D> textures, Color color) : base(
+        public ParticleSystem(GameCenter gameCenter, Transform transform, string name, Texture2D texture, Color color) : base(
             gameCenter, transform, name)
         {
-            _textures = textures;
+            _texture = texture;
             _particles = new List<Particle>();
             _random = new Random();
             _color = color;
@@ -30,7 +30,6 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
 
         private Particle GenerateNewParticle()
         {
-            Texture2D texture = _textures[_random.Next(_textures.Count)];
             Vector2 position = Transform.Position;
             Vector2 velocity = new Vector2(
                 1f * (float) (_random.NextDouble() * 2 - 1),
@@ -40,7 +39,7 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
             float size = .2f;
             int ttl = 20 + _random.Next(40);
 
-            return new Particle(new Transform(position, new Vector2(size), angle), texture, velocity, angularVelocity, _color, 20);
+            return new Particle(new Transform(position, new Vector2(size), angle), _texture, velocity, angularVelocity, _color, 20);
         }
 
         public override void Update(GameTime gameTime)

@@ -33,13 +33,13 @@ namespace MonoGameJam4
         public List<GameObject> GameObjects;
 
         private bool _hasStarted;
-        
+
         public GameCenter()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            
+
             InputManagement = new InputManagement();
             GameWindow = new Window(_graphics);
 
@@ -53,8 +53,8 @@ namespace MonoGameJam4
 
         protected override void Initialize()
         {
-            ContentLoader = new ContentLoader();            
-            
+            ContentLoader = new ContentLoader();
+
             GameObjects = new List<GameObject>();
 
             Camera = new Camera(this, new Transform(Vector2.Zero, Vector2.Zero, 0), "Camera", GameWindow);
@@ -71,16 +71,14 @@ namespace MonoGameJam4
             // GameObjects.Add(new Box(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "box", true, "Square"));
             GameObjects.Add(new WorldBorder(this, new Transform(), "Bounds"));
             // GameObjects.Add(new Enemy(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "Enemy", true));
-            GameObjects.Add(new ParticleSystem(this, new Transform(), "ParticleSystem", new List<Texture2D>()
-            {
-                ContentLoader.Textures["Point"]
-            }, Color.White));
+            GameObjects.Add(new ParticleSystem(this, new Transform(), "ParticleSystem", ContentLoader.Textures["Point"],
+                Color.White));
         }
 
         protected override void LoadContent()
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
-            
+
             ContentLoader.LoadContend(Content);
         }
 
@@ -91,7 +89,7 @@ namespace MonoGameJam4
                 Start();
                 _hasStarted = true;
             }
-            
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
@@ -112,7 +110,7 @@ namespace MonoGameJam4
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            
+
             SpriteBatch.Begin();
             Rendered?.Invoke();
             // SpriteBatch.Draw(Content.Load<Texture2D>("Square"), new Rectangle(GameWindow.ScreenMiddlePoint.ToPoint(), (Vector2.One * 2).ToPoint()), Color.Green);

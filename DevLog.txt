@@ -27,3 +27,6 @@ transform and render classes can now rotate
 
 Day 09 - 12.01.2022
 added mouse input support, screen distance to world distance, border, box
+
+Day 10 - 13.01.2022
+created class for first enemy, bullet class, color rendering

@@ -67,11 +67,11 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
             }
         }
 
-        public void Render(SpriteBatch spriteBatch)
+        public void Render(SpriteBatch spriteBatch, Camera camera, Window gameWindow)
         {
             foreach (Particle t in _particles)
             {
-                t.Draw(spriteBatch);
+                t.Render(spriteBatch, camera, gameWindow);
             }
         }
     }

@@ -30,21 +30,36 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
             _color = color;
             LiveTime = liveTime;
         }
-        
+
         public void Update()
         {
             LiveTime--;
             Transform.Position += Velocity * Time.DeltaTime;
             Transform.Rotation += AngularVelocity * Time.DeltaTime;
         }
-        
-        public void Draw(SpriteBatch spriteBatch)
+
+        public void Render(SpriteBatch spriteBatch, Camera camera, Window window)
         {
-            Rectangle sourceRectangle = new Rectangle(0, 0, _texture.Width, _texture.Height);
+            Vector2 size = Transform.Scale * camera.PixelsPerUnit;
+
+            // find out the position relative to the camera
+            Vector2 relativePosition = Transform.Position - camera.Transform.Position;
+            // convert the position into pixel space
+            relativePosition *= camera.Zoom * camera.PixelsPerUnit;
+            // fix direction
+            relativePosition.Y *= -1;
+            // align the position relative to the screen center
+            relativePosition += window.ScreenMiddlePoint;
+
             Vector2 origin = _texture.Bounds.Center.ToVector2();
- 
-            spriteBatch.Draw(_texture, Transform.Position, sourceRectangle, _color, 
-                Transform.Rotation, origin, Transform.Scale, SpriteEffects.None, 0f);
+
+            // hint: the renderer takes the rotation as degrees
+            float rotation = Transform.Rotation;
+
+            Rectangle destinationRectangle = new Rectangle((int) (relativePosition.X), (int) (relativePosition.Y),
+                (int) size.X, (int) size.Y);
+
+            spriteBatch.Draw(_texture, destinationRectangle, null, _color, rotation, origin, SpriteEffects.None, 1);
         }
     }
 }

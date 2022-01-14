@@ -51,5 +51,11 @@ namespace MonoGameJam4.Engine.Rendering
             
             // https://docs.monogame.net/api/Microsoft.Xna.Framework.Graphics.SpriteBatch.html#Microsoft_Xna_Framework_Graphics_SpriteBatch_Draw_Microsoft_Xna_Framework_Graphics_Texture2D_Microsoft_Xna_Framework_Vector2_System_Nullable_Microsoft_Xna_Framework_Rectangle__Microsoft_Xna_Framework_Color_System_Single_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Vector2_Microsoft_Xna_Framework_Graphics_SpriteEffects_System_Single_
         }
+
+        public override void Disable()
+        {
+            base.Disable();
+            GameObject.GameCenter.Rendered -= Render;
+        }
     }
 }

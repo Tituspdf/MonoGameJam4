@@ -21,7 +21,7 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
         private readonly float _angularVelocity; 
 
         /// <summary>the color of the particle</summary>
-        private readonly Color _color; // The size of the particle
+        private readonly Color _color; 
 
         public int LiveTime { get; set; } // The 'time to live' of the particle
 

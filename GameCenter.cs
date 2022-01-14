@@ -10,6 +10,7 @@ using MonoGameJam4.Engine.Enums;
 using MonoGameJam4.Engine.Input;
 using MonoGameJam4.Engine.Interfaces;
 using MonoGameJam4.Engine.Rendering;
+using MonoGameJam4.Engine.Rendering.ParticleEngine;
 using MonoGameJam4.Engine.WorldSpace;
 using MonoGameJam4.GameContent;
 using MonoGameJam4.GameContent.Entities;
@@ -70,6 +71,10 @@ namespace MonoGameJam4
             // GameObjects.Add(new Box(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "box", true, "Square"));
             GameObjects.Add(new WorldBorder(this, new Transform(), "Bounds"));
             // GameObjects.Add(new Enemy(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "Enemy", true));
+            GameObjects.Add(new ParticleSystem(this, new Transform(), "ParticleSystem", new List<Texture2D>()
+            {
+                ContentLoader.Textures["Point"]
+            }));
         }
 
         protected override void LoadContent()
@@ -114,7 +119,7 @@ namespace MonoGameJam4
             foreach (GameObject obj in GameObjects)
             {
                 IRenderCall call = obj as IRenderCall;
-                call?.Render(SpriteBatch);
+                call?.Render(SpriteBatch, Camera, GameWindow);
             }
 
             SpriteBatch.End();

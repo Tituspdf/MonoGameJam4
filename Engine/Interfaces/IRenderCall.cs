@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using MonoGameJam4.Engine.Rendering;
 
 namespace MonoGameJam4.Engine.Interfaces
 {
@@ -7,6 +8,6 @@ namespace MonoGameJam4.Engine.Interfaces
     /// </summary>
     public interface IRenderCall
     {
-        public void Render(SpriteBatch spriteBatch);
+        public void Render(SpriteBatch spriteBatch, Camera camera, Window gameWindow);
     }
 }

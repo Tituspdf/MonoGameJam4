@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.Interfaces;
 using MonoGameJam4.Engine.WorldSpace;
@@ -79,6 +80,9 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
                     particle--;
                 }
             }
+            
+            if (_particles.Count == 0)
+                Deconstruct();
         }
 
         public void Render(SpriteBatch spriteBatch, Camera camera, Window gameWindow)

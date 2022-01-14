@@ -13,6 +13,13 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
         public int Amount;
         public Color Color;
         public Texture2D Texture;
+
+        public ParticleData(int amount, Color color, Texture2D texture)
+        {
+            Amount = amount;
+            Color = color;
+            Texture = texture;
+        }
     }
     
     /// <summary>

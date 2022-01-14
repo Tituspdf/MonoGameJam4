@@ -34,5 +34,11 @@ namespace MonoGameJam4.GameContent.Entities
         {
             
         }
+
+        public override void Deconstruct()
+        {
+            base.Deconstruct();
+            Renderer.Deconstruct();
+        }
     }
 }

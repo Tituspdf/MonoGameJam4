@@ -23,5 +23,10 @@ namespace MonoGameJam4.Engine.Entities
         public virtual void Update(GameTime gameTime)
         {
         }
+
+        public virtual void Deconstruct()
+        {
+            
+        }
     }
 }

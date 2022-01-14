@@ -59,7 +59,7 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
             for (int particle = 0; particle < _particles.Count; particle++)
             {
                 _particles[particle].Update();
-                if (_particles[particle].TTL <= 0)
+                if (_particles[particle].LiveTime <= 0)
                 {
                     _particles.RemoveAt(particle);
                     particle--;

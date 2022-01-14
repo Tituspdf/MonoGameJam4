@@ -10,5 +10,10 @@ namespace MonoGameJam4.Engine
         {
             GameObject = gameObject;
         }
+
+        public virtual void Disable()
+        {
+            
+        }
     }
 }

@@ -8,6 +8,7 @@ using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.Enums;
 using MonoGameJam4.Engine.Input;
+using MonoGameJam4.Engine.Interfaces;
 using MonoGameJam4.Engine.Rendering;
 using MonoGameJam4.Engine.WorldSpace;
 using MonoGameJam4.GameContent;
@@ -110,6 +111,12 @@ namespace MonoGameJam4
             SpriteBatch.Begin();
             Rendered?.Invoke();
             // SpriteBatch.Draw(Content.Load<Texture2D>("Square"), new Rectangle(GameWindow.ScreenMiddlePoint.ToPoint(), (Vector2.One * 2).ToPoint()), Color.Green);
+            foreach (GameObject obj in GameObjects)
+            {
+                IRenderCall call = obj as IRenderCall;
+                call?.Render(SpriteBatch);
+            }
+
             SpriteBatch.End();
             base.Draw(gameTime);
         }

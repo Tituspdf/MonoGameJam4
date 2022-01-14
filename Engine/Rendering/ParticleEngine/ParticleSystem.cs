@@ -12,8 +12,8 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
     {
         public int Amount;
         public Color Color;
-        public Texture2D Texture;
-        public float LifeTime;
+        public readonly Texture2D Texture;
+        public readonly float LifeTime;
 
         public ParticleData(int amount, Color color, Texture2D texture, float lifeTime)
         {

@@ -30,3 +30,6 @@ added mouse input support, screen distance to world distance, border, box
 
 Day 10 - 13.01.2022
 created class for first enemy, bullet class, color rendering
+
+Day 11 - 14.01.2022
+debugged mouse event invoking, first version of the bullets, component deconstruction,

@@ -32,7 +32,7 @@ namespace MonoGameJam4.GameContent.Entities
 
         private void OnCollision(CollidingObject obj)
         {
-            
+            Deconstruct();
         }
 
         public override void Deconstruct()

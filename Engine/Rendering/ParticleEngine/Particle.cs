@@ -1,49 +1,49 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGameJam4.Engine.Interfaces;
+using MonoGameJam4.Engine.WorldSpace;
 
 namespace MonoGameJam4.Engine.Rendering.ParticleEngine
 {
     /// <summary>
     /// particle element for <see cref="ParticleSystem"/>
     /// </summary>
-    public class Particle
+    public class Particle : IPositionable
     {
-        public Texture2D Texture { get; set; }        // The texture that will be drawn to represent the particle
-        public Vector2 Position { get; set; }        // The current position of the particle        
-        public Vector2 Velocity { get; set; }        // The speed of the particle at the current instance
-        public float Angle { get; set; }            // The current angle of rotation of the particle
-        public float AngularVelocity { get; set; }    // The speed that the angle is changing
-        public Color Color { get; set; }            // The color of the particle
-        public float Size { get; set; }                // The size of the particle
-        public int TTL { get; set; }                // The 'time to live' of the particle
+        public Transform Transform { get; set; }
         
-        public Particle(Texture2D texture, Vector2 position, Vector2 velocity,
-                    float angle, float angularVelocity, Color color, float size, int ttl)
+        private readonly Texture2D _texture;   // The texture that will be drawn to represent the particle
+        private Vector2 Velocity;       // The speed of the particle at the current instance
+        private float AngularVelocity;  // The speed that the angle is changing
+        /// <summary>the color of the particle</summary>
+        private readonly Color _color;               // The size of the particle
+        public int LiveTime { get; set; }                // The 'time to live' of the particle
+        
+        public Particle(Transform transform, Texture2D texture, Vector2 velocity,
+                    float angularVelocity, Color color, int liveTime)
         {
-            Texture = texture;
-            Position = position;
+            Transform = transform;
+            _texture = texture;
             Velocity = velocity;
-            Angle = angle;
             AngularVelocity = angularVelocity;
-            Color = color;
-            Size = size;
-            TTL = ttl;
+            _color = color;
+            LiveTime = liveTime;
         }
         
         public void Update()
         {
-            TTL--;
-            Position += Velocity;
-            Angle += AngularVelocity;
+            LiveTime--;
+            Transform.Position += Velocity * Time.DeltaTime;
+            Transform.Rotation += AngularVelocity * Time.DeltaTime;
         }
         
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle sourceRectangle = new Rectangle(0, 0, Texture.Width, Texture.Height);
-            Vector2 origin = new Vector2(Texture.Width / 2, Texture.Height / 2);
+            Rectangle sourceRectangle = new Rectangle(0, 0, _texture.Width, _texture.Height);
+            Vector2 origin = _texture.Bounds.Center.ToVector2();
  
-            spriteBatch.Draw(Texture, Position, sourceRectangle, Color, 
-                Angle, origin, Size, SpriteEffects.None, 0f);
+            spriteBatch.Draw(_texture, Transform.Position, sourceRectangle, _color, 
+                Transform.Rotation, origin, Transform.Scale, SpriteEffects.None, 0f);
         }
     }
 }

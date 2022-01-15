@@ -16,14 +16,16 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
         public readonly Texture2D Texture;
         public readonly float LifeTime;
         public Vector2 Size;
+        public readonly float Velocity;
 
-        public ParticleData(int amount, Color color, Texture2D texture, float lifeTime, Vector2 size)
+        public ParticleData(int amount, Color color, Texture2D texture, float lifeTime, Vector2 size, float velocity)
         {
             Amount = amount;
             Color = color;
             Texture = texture;
             LifeTime = lifeTime;
             Size = size;
+            Velocity = velocity;
         }
     }
 
@@ -59,8 +61,8 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
         {
             Vector2 position = Transform.Position;
             Vector2 velocity = new Vector2(
-                Mathematics.Random.RandomFloat(-2f, 2f),
-                Mathematics.Random.RandomFloat(-2f, 2f));
+                Mathematics.Random.RandomFloat(-_data.Velocity, _data.Velocity),
+                Mathematics.Random.RandomFloat(-_data.Velocity, _data.Velocity));
             float angle = 0;
 
             return new Particle(new Transform(position, _data.Size, angle), _data.Texture, velocity,

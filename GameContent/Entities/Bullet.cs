@@ -6,6 +6,7 @@ using MonoGameJam4.Engine.Interfaces;
 using MonoGameJam4.Engine.Rendering;
 using MonoGameJam4.Engine.Rendering.ParticleEngine;
 using MonoGameJam4.Engine.WorldSpace;
+using MonoGameJam4.GameContent.Interfaces;
 
 namespace MonoGameJam4.GameContent.Entities
 {
@@ -34,6 +35,7 @@ namespace MonoGameJam4.GameContent.Entities
 
         private void OnCollision(CollidingObject obj)
         {
+            (obj as IHittable)?.Hit();
             Deconstruct();
         }
 

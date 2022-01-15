@@ -33,3 +33,6 @@ created class for first enemy, bullet class, color rendering
 
 Day 11 - 14.01.2022
 debugged mouse event invoking, first version of the bullets, component deconstruction, created a particle system :DD
+
+Day 12 - 15.01.2022
+random float method, bigger screen, bullet destroy particle, health for the enemy and die particle for enemy 

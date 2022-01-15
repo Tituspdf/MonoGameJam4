@@ -71,8 +71,6 @@ namespace MonoGameJam4
             // GameObjects.Add(new Box(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "box", true, "Square"));
             GameObjects.Add(new WorldBorder(this, new Transform(), "Bounds"));
             // GameObjects.Add(new Enemy(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "Enemy", true));
-            ParticleData data = new ParticleData(40, Color.White, ContentLoader.Textures["Point"], 1.5f, new Vector2(0.2f));
-            GameObjects.Add(new ParticleSystem(this, new Transform(), "ParticleSystem", data));
         }
 
         protected override void LoadContent()

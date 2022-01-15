@@ -59,8 +59,8 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
         {
             Vector2 position = Transform.Position;
             Vector2 velocity = new Vector2(
-                1f * (float) (_random.NextDouble() * 2 - 1),
-                1f * (float) (_random.NextDouble() * 2 - 1));
+                Mathematics.Random.RandomFloat(-2f, 2f),
+                Mathematics.Random.RandomFloat(-2f, 2f));
             float angle = 0;
 
             return new Particle(new Transform(position, _data.Size, angle), _data.Texture, velocity,

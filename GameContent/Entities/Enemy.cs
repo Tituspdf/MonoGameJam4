@@ -48,6 +48,8 @@ namespace MonoGameJam4.GameContent.Entities
 
         public void Hit()
         {
+            _health -= BulletDamage;
+            
             
         }
     }

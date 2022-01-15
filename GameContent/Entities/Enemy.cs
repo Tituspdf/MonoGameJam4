@@ -16,8 +16,8 @@ namespace MonoGameJam4.GameContent.Entities
 
         private float _speed = 0.7f;
 
-        private float _bulletDamage = 20;
-        private float _maxHealth = 50;
+        private const float BulletDamage = 20;
+        private const float MaxHealth = 50;
         private float _health;
 
         public Enemy(GameCenter gameCenter, Transform transform, string name, bool colliding) : base(gameCenter, transform, name, colliding)
@@ -29,7 +29,7 @@ namespace MonoGameJam4.GameContent.Entities
                 break;
             }
 
-            _health = _maxHealth;
+            _health = MaxHealth;
         }
 
         public override void Update(GameTime gameTime)

@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using MonoGameJam4.Engine;
+using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.Interfaces;
 using MonoGameJam4.Engine.Rendering;
@@ -49,8 +51,15 @@ namespace MonoGameJam4.GameContent.Entities
         public void Hit()
         {
             _health -= BulletDamage;
+            Renderer.Color = Color.White * (_health / MaxHealth);
             
-            
+            if (_health < 0) Deconstruct();
+        }
+
+        public override void Deconstruct()
+        {
+            base.Deconstruct();
+            Renderer.Deconstruct();
         }
     }
 }

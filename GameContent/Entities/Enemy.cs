@@ -16,8 +16,10 @@ namespace MonoGameJam4.GameContent.Entities
 
         private float _speed = 0.7f;
 
+        private float _bulletDamage = 20;
+        private float _maxHealth = 50;
         private float _health;
-        
+
         public Enemy(GameCenter gameCenter, Transform transform, string name, bool colliding) : base(gameCenter, transform, name, colliding)
         {
             Renderer = new Renderer(this, "Point");
@@ -26,6 +28,8 @@ namespace MonoGameJam4.GameContent.Entities
                 _player = obj;
                 break;
             }
+
+            _health = _maxHealth;
         }
 
         public override void Update(GameTime gameTime)

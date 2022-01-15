@@ -5,15 +5,18 @@ using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.Interfaces;
 using MonoGameJam4.Engine.Rendering;
 using MonoGameJam4.Engine.WorldSpace;
+using MonoGameJam4.GameContent.Interfaces;
 
 namespace MonoGameJam4.GameContent.Entities
 {
-    public class Enemy : WorldObject, IRendering
+    public class Enemy : WorldObject, IRendering, IHittable
     {
         private GameObject _player;
         public Renderer Renderer { get; set; }
 
         private float _speed = 0.7f;
+
+        private float _health;
         
         public Enemy(GameCenter gameCenter, Transform transform, string name, bool colliding) : base(gameCenter, transform, name, colliding)
         {
@@ -35,6 +38,11 @@ namespace MonoGameJam4.GameContent.Entities
         }
 
         private void OnCollision(CollidingObject obj)
+        {
+            
+        }
+
+        public void Hit()
         {
             
         }

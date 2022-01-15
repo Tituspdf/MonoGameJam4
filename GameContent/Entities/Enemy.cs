@@ -6,6 +6,7 @@ using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.Interfaces;
 using MonoGameJam4.Engine.Rendering;
+using MonoGameJam4.Engine.Rendering.ParticleEngine;
 using MonoGameJam4.Engine.WorldSpace;
 using MonoGameJam4.GameContent.Interfaces;
 
@@ -60,6 +61,8 @@ namespace MonoGameJam4.GameContent.Entities
         {
             base.Deconstruct();
             Renderer.Deconstruct();
+            ParticleData data = new ParticleData(50, Color.White, GameCenter.ContentLoader.Textures["Point"], 1.35f, new Vector2(0.3f), 2f);
+            GameCenter.GameObjects.Add(new ParticleSystem(GameCenter, new Transform(), "EnemyDestroyParticle", data));
         }
     }
 }

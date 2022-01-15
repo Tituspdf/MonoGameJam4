@@ -62,6 +62,11 @@ namespace MonoGameJam4
 
             InputManagement.GetCallback(Keys.Space).Invoked += () => { Debug.LogError("Hello World"); };
 
+            foreach (EngineObject engineObject in _engineClasses)
+            {
+                engineObject.OnInitialize();
+            }
+            
             base.Initialize();
         }
 

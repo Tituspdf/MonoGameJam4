@@ -4,15 +4,25 @@ namespace MonoGameJam4.Engine.Rendering
 {
     public class Window : EngineObject
     {
-        private GraphicsDeviceManager _graphics;
+        private readonly GraphicsDeviceManager _graphics;
 
-        public Vector2 ScreenSize { get; private set; }
+        public Vector2 ScreenSize => new Vector2(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight);
+
         public Vector2 ScreenMiddlePoint => ScreenSize / 2;
+        private readonly Point _startSize;
 
-        public Window(GraphicsDeviceManager graphics)
+        public Window(GraphicsDeviceManager graphics, Point startSize)
         {
             _graphics = graphics;
-            ScreenSize = new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            _startSize = startSize;
+        }
+
+        public override void OnInitialize()
+        {
+            base.OnInitialize();
+            _graphics.PreferredBackBufferWidth = _startSize.X;  // set this value to the desired width of your window
+            _graphics.PreferredBackBufferHeight = _startSize.Y;   // set this value to the desired height of your window
+            _graphics.ApplyChanges();
         }
     }
 }

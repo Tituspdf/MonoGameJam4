@@ -10,7 +10,6 @@ using MonoGameJam4.Engine.Enums;
 using MonoGameJam4.Engine.Input;
 using MonoGameJam4.Engine.Interfaces;
 using MonoGameJam4.Engine.Rendering;
-using MonoGameJam4.Engine.Rendering.ParticleEngine;
 using MonoGameJam4.Engine.WorldSpace;
 using MonoGameJam4.GameContent;
 using MonoGameJam4.GameContent.Entities;

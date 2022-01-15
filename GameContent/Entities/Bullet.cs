@@ -4,6 +4,7 @@ using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.Interfaces;
 using MonoGameJam4.Engine.Rendering;
+using MonoGameJam4.Engine.Rendering.ParticleEngine;
 using MonoGameJam4.Engine.WorldSpace;
 
 namespace MonoGameJam4.GameContent.Entities
@@ -13,10 +14,11 @@ namespace MonoGameJam4.GameContent.Entities
         public static readonly Vector2 Size = new Vector2(1) * 0.3f;
 
         private Vector2 _velocity;
-        
+
         public Renderer Renderer { get; set; }
-        
-        public Bullet(GameCenter gameCenter, Transform transform, string name, bool colliding, Vector2 velocity) : base(gameCenter, transform, name, colliding)
+
+        public Bullet(GameCenter gameCenter, Transform transform, string name, bool colliding, Vector2 velocity) : base(
+            gameCenter, transform, name, colliding)
         {
             _velocity = velocity;
             Renderer = new Renderer(this, "Point");
@@ -32,8 +34,6 @@ namespace MonoGameJam4.GameContent.Entities
 
         private void OnCollision(CollidingObject obj)
         {
-            if (obj.Name == "Bullet") return;
-            
             Deconstruct();
         }
 
@@ -41,6 +41,9 @@ namespace MonoGameJam4.GameContent.Entities
         {
             base.Deconstruct();
             Renderer.Deconstruct();
+            ParticleData data = new ParticleData(30, Color.White, GameCenter.ContentLoader.Textures["Point"], 1.35f, new Vector2(0.1f), 0.75f);
+            GameCenter.GameObjects.Add(new ParticleSystem(GameCenter,
+                new Transform(Transform.Position, Transform.Scale, 0), "BulletParticle", data));
         }
     }
 }

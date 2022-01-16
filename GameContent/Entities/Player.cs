@@ -18,6 +18,7 @@ namespace MonoGameJam4.GameContent.Entities
     {
         public enum PlayerState
         {
+            Pause,
             /// <summary> state where the player can move freely </summary>
             Fighting,
 
@@ -139,6 +140,8 @@ namespace MonoGameJam4.GameContent.Entities
                     if (_upgradeTimer <= 0) LevelUp();
                     break;
                 }
+                case PlayerState.Pause:
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

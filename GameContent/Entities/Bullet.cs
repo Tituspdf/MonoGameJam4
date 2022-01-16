@@ -3,6 +3,7 @@ using MonoGameJam4.Engine;
 using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.Interfaces;
+using MonoGameJam4.Engine.Mathematics;
 using MonoGameJam4.Engine.Rendering;
 using MonoGameJam4.Engine.Rendering.ParticleEngine;
 using MonoGameJam4.Engine.WorldSpace;
@@ -43,7 +44,8 @@ namespace MonoGameJam4.GameContent.Entities
         {
             base.Deconstruct();
             Renderer.Deconstruct();
-            ParticleData data = new ParticleData(30, Color.White, GameCenter.ContentLoader.Textures["Point"], 1.35f, new Vector2(0.1f), 0.75f);
+            ParticleData data = new ParticleData(30, Color.White, GameCenter.ContentLoader.Textures["Point"], 1.35f,
+                new Vector2(0.1f), new RandomFloat(0.2f, 0.6f));
             GameCenter.GameObjects.Add(new ParticleSystem(GameCenter,
                 new Transform(Transform.Position, Transform.Scale, 0), "BulletParticle", data));
         }

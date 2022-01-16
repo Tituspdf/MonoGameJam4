@@ -201,7 +201,7 @@ namespace MonoGameJam4.GameContent.Entities
 
         private void OnDeath()
         {
-            foreach (GameObject gameObject in GameCenter.GameObjects.Where(o => o is IResettable))
+            foreach (GameObject gameObject in GameCenter.GameObjects.ToArray().Where(o => o is IResettable))
             {
                 (gameObject as IResettable)?.Reset();
             }
@@ -212,8 +212,11 @@ namespace MonoGameJam4.GameContent.Entities
             HealthRegeneration = 0.01f;
             MaxBullets = 5;
             BulletTime = 1.5f;
+            CurrentBullets = MaxBullets;
             _bulletVelocity = 5;
             CurrentLevel = 0;
+            _currentHealth = MaxHealth;
+            Score = 0;
         }
     }
 }

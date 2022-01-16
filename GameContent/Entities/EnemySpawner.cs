@@ -23,8 +23,6 @@ namespace MonoGameJam4.GameContent.Entities
             _player = player;
             _spawnTimer = _spawnDelay;
             _wave = 0;
-
-            Spawn();
         }
 
         public override void Update(GameTime gameTime)
@@ -54,7 +52,7 @@ namespace MonoGameJam4.GameContent.Entities
 
         public void Reset()
         {
-            foreach (GameObject gameObject in GameCenter.GameObjects.Where(o => o is Enemy))
+            foreach (GameObject gameObject in GameCenter.GameObjects.ToArray().Where(o => o is Enemy))
             {
                 Enemy enemy = (Enemy) gameObject;
                 enemy.Deconstruct();

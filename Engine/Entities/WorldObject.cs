@@ -40,9 +40,8 @@ namespace MonoGameJam4.Engine.Entities
 
             Vector2 move = new Vector2(0, amount);
 
-            foreach (GameObject o in GameCenter.GetColliders())
+            foreach (WorldObject worldObject in GameCenter.GetColliders())
             {
-                WorldObject worldObject = (WorldObject) o;
                 if (worldObject == this) continue;
                 if (!CheckCollision(Transform.Moved(move), worldObject.Transform)) continue;
                 onCollision?.Invoke(worldObject);

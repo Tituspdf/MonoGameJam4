@@ -57,7 +57,11 @@ namespace MonoGameJam4.GameContent.Entities
             _health -= BulletDamage;
             Renderer.Color = Color.White * (_health / MaxHealth);
             
-            if (_health < 0) Deconstruct();
+            if (_health < 0)
+            {
+                Deconstruct();
+                (_player as Player)?.AddScore(1);
+            }
         }
 
         public override void Deconstruct()

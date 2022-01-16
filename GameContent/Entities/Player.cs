@@ -105,5 +105,10 @@ namespace MonoGameJam4.GameContent.Entities
                 _currentHealth = MaxHealth;
             }
         }
+
+        public void AddScore(int amount)
+        {
+            Score += amount;
+        }
     }
 }

@@ -66,7 +66,7 @@ namespace MonoGameJam4
             {
                 engineObject.OnInitialize();
             }
-            
+
             base.Initialize();
         }
 
@@ -77,10 +77,10 @@ namespace MonoGameJam4
             // GameObjects.Add(new Box(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "box", true, "Square"));
             GameObjects.Add(new WorldBorder(this, new Transform(), "Bounds"));
             GameObjects.Add(new Enemy(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "Enemy", true));
-            
+
             GameObjects.Add(new HealthBar(this, new Transform(), "HealthBar", player));
             GameObjects.Add(new BulletDisplay(this, new Transform(), "BulletDisplay", player));
-            
+
             GameObjects.Add(new Score(this, new Transform(), "ScoreDisplay"));
         }
 
@@ -122,7 +122,13 @@ namespace MonoGameJam4
 
             SpriteBatch.Begin();
             Rendered?.Invoke();
-            // SpriteBatch.Draw(Content.Load<Texture2D>("Square"), new Rectangle(GameWindow.ScreenMiddlePoint.ToPoint(), (Vector2.One * 2).ToPoint()), Color.Green);
+            
+            // debug point in the middle of the screen
+            Texture2D debugTexture = Content.Load<Texture2D>("Square");
+            SpriteBatch.Draw(debugTexture,
+                new Rectangle(GameWindow.ScreenMiddlePoint.ToPoint(), (Vector2.One * 2).ToPoint()), null, Color.Green,
+                0, debugTexture.Bounds.Center.ToVector2(), SpriteEffects.None, 1);
+            
             foreach (GameObject obj in GameObjects)
             {
                 IRenderCall call = obj as IRenderCall;

@@ -124,10 +124,10 @@ namespace MonoGameJam4
             Rendered?.Invoke();
             
             // debug point in the middle of the screen
-            Texture2D debugTexture = Content.Load<Texture2D>("Square");
-            SpriteBatch.Draw(debugTexture,
-                new Rectangle(GameWindow.ScreenMiddlePoint.ToPoint(), (Vector2.One * 2).ToPoint()), null, Color.Green,
-                0, debugTexture.Bounds.Center.ToVector2(), SpriteEffects.None, 1);
+            // Texture2D debugTexture = Content.Load<Texture2D>("Square");
+            // SpriteBatch.Draw(debugTexture,
+            //     new Rectangle(GameWindow.ScreenMiddlePoint.ToPoint(), (Vector2.One * 2).ToPoint()), null, Color.Green,
+            //     0, debugTexture.Bounds.Center.ToVector2(), SpriteEffects.None, 1);
             
             foreach (GameObject obj in GameObjects)
             {

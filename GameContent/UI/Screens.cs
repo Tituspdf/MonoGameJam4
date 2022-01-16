@@ -22,6 +22,7 @@ namespace MonoGameJam4.GameContent.UI
         public GameState State;
 
         private SpriteFont _fontNormal;
+        private SpriteFont _headFont;
         private Texture2D _squareTexture;
 
         public Screens(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name)
@@ -29,6 +30,7 @@ namespace MonoGameJam4.GameContent.UI
             State = GameState.MainMenu;
             _fontNormal = gameCenter.ContentLoader.ScoreFont;
             _squareTexture = gameCenter.ContentLoader.Textures["Square"];
+            _headFont = GameCenter.Content.Load<SpriteFont>("Header");
             Time.Scale = 0;
             
             gameCenter.InputManagement.GetCallback(Keys.Space).Invoked += OnSpace;
@@ -64,11 +66,31 @@ namespace MonoGameJam4.GameContent.UI
                 case GameState.MainMenu:
                 {
                     spriteBatch.Draw(_squareTexture, new Rectangle(Point.Zero, gameWindow.ScreenSize.ToPoint()), null, Color.Black, 0, Vector2.Zero, SpriteEffects.None, 0.9f);
+
+                    string headline = "spaceangle";
+                    Vector2 headerSize = _fontNormal.MeasureString(headline);
+                    spriteBatch.DrawString(_fontNormal, headline, new Vector2(50, 25), Color.White, 0, Vector2.Zero,
+                        Vector2.One * 2.5f, SpriteEffects.None, 1);
                     
                     string text = "Press 'SPACE' to play!";
                     Vector2 size = _fontNormal.MeasureString(text);
-                    spriteBatch.DrawString(_fontNormal, text, new Vector2(50), Color.White, 0, Vector2.Zero,
+                    spriteBatch.DrawString(_fontNormal, text, new Vector2(50, 300), Color.White, 0, Vector2.Zero,
                         Vector2.One, SpriteEffects.None, 1);
+                    
+                    text = "use the mouse to look around,";
+                    size = _fontNormal.MeasureString(text);
+                    spriteBatch.DrawString(_fontNormal, text, new Vector2(50, 450), Color.White, 0, Vector2.Zero,
+                        Vector2.One * 0.8f, SpriteEffects.None, 1);
+                    
+                    text = "the left mouse button to shoot";
+                    size = _fontNormal.MeasureString(text);
+                    spriteBatch.DrawString(_fontNormal, text, new Vector2(50, 500), Color.White, 0, Vector2.Zero,
+                        Vector2.One * 0.8f, SpriteEffects.None, 1);
+                    
+                    text = "and 'wasd' to move";
+                    size = _fontNormal.MeasureString(text);
+                    spriteBatch.DrawString(_fontNormal, text, new Vector2(50, 550), Color.White, 0, Vector2.Zero,
+                        Vector2.One * 0.8f, SpriteEffects.None, 1);
                     break;
                 }
                 case GameState.Death:

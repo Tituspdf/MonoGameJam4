@@ -10,6 +10,7 @@ using MonoGameJam4.Engine.Rendering;
 using MonoGameJam4.Engine.Rendering.ParticleEngine;
 using MonoGameJam4.Engine.WorldSpace;
 using MonoGameJam4.GameContent.Interfaces;
+using Random = MonoGameJam4.Engine.Mathematics.Random;
 
 namespace MonoGameJam4.GameContent.Entities
 {
@@ -33,6 +34,13 @@ namespace MonoGameJam4.GameContent.Entities
         private float _health;
 
         private const float GrowingRate = 1.05f;
+        
+        private readonly float _minX;
+        private readonly float _minY;
+        private readonly float _maxX;
+        private readonly float _maxY;
+        
+        private float _playerDistance = 3f;
 
         public Enemy(GameCenter gameCenter, Transform transform, string name, bool colliding) : base(gameCenter,
             transform, name, colliding)
@@ -47,8 +55,38 @@ namespace MonoGameJam4.GameContent.Entities
             _health = MaxHealth;
 
             _state = BehaviorState.Spawning;
+            
+            Vector2 tl = gameCenter.Camera.ScreenToWorldPosition(new Vector2(0, 0));
+            Vector2 br = gameCenter.Camera.ScreenToWorldPosition(gameCenter.GameWindow.ScreenSize);
+            _minX = tl.X + 1;
+            _maxX = br.X - 1;
+            _minY = br.Y + 1;
+            _maxY = tl.Y - 1;
+            
+            Vector2 position;
+            float distance;
+            
+            do
+            {
+                position = new Vector2(Random.RandomFloat(_minX, _maxX), Random.RandomFloat(_minY, _maxY));
+                distance = (position - _player.Transform.Position).Length();
+            } while (distance <= _playerDistance && CheckOtherEnemies(position));
+
+            transform.Position = position;
         }
 
+        private bool CheckOtherEnemies(Vector2 position)
+        {
+            foreach (var worldObject in GameCenter.GetColliders().Where(o => o is Enemy))
+            {
+                Enemy enemy = (Enemy) worldObject;
+                Transform.Position = position;
+                if (CheckCollision(Transform, enemy.Transform)) return false;
+            }
+
+            return true;
+        }
+        
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);

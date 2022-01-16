@@ -10,13 +10,7 @@ namespace MonoGameJam4.GameContent.Entities
     public class EnemySpawner : GameObject
     {
         private float _spawnDelay = 5f;
-        private float _playerDistance = 3f;
         private float _spawnTimer;
-
-        private readonly float _minX;
-        private readonly float _minY;
-        private readonly float _maxX;
-        private readonly float _maxY;
 
         private Player _player;
 
@@ -29,13 +23,6 @@ namespace MonoGameJam4.GameContent.Entities
             _spawnTimer = _spawnDelay;
             _wave = 0;
 
-            Vector2 tl = gameCenter.Camera.ScreenToWorldPosition(new Vector2(0, 0));
-            Vector2 br = gameCenter.Camera.ScreenToWorldPosition(gameCenter.GameWindow.ScreenSize);
-            _minX = tl.X + 1;
-            _maxX = br.X - 1;
-            _minY = br.Y + 1;
-            _maxY = tl.Y - 1;
-            
             Spawn();
         }
 
@@ -54,15 +41,7 @@ namespace MonoGameJam4.GameContent.Entities
         {
             for (int i = 0; i < _enemiesPerWave; i++)
             {
-                Vector2 position;
-                float distance;
-                do
-                {
-                    position = new Vector2(Random.RandomFloat(_minX, _maxX), Random.RandomFloat(_minY, _maxY));
-                    distance = (position - _player.Transform.Position).Length();
-                } while (distance <= _playerDistance);
-
-                GameCenter.GameObjects.Add(new Enemy(GameCenter, new Transform(position, Vector2.One * 0.1f, 0),
+                GameCenter.GameObjects.Add(new Enemy(GameCenter, new Transform(Vector2.Zero, Vector2.One * 0.1f, 0),
                     "Enemy",
                     true));
             }

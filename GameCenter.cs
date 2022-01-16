@@ -101,10 +101,6 @@ namespace MonoGameJam4
                 _hasStarted = true;
             }
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-                Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
             foreach (IUpdateable element in _engineClasses)
             {
                 element.Update(gameTime);

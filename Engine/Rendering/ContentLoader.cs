@@ -20,6 +20,7 @@ namespace MonoGameJam4.Engine.Rendering
             Textures.Add("Point", contentManager.Load<Texture2D>("Point"));
             Textures.Add("Frame", contentManager.Load<Texture2D>("Frame"));
             Textures.Add("Heart", contentManager.Load<Texture2D>("Heart"));
+            Textures.Add("EmptyPoint", contentManager.Load<Texture2D>("EmptyPoint"));
         }
     }
 }

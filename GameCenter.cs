@@ -41,7 +41,7 @@ namespace MonoGameJam4
             IsMouseVisible = true;
 
             InputManagement = new InputManagement();
-            GameWindow = new Window(_graphics, new Point(1280, 720));
+            GameWindow = new Window(_graphics, new Point(1280, 720), this);
 
             _engineClasses = new EngineObject[]
             {

@@ -11,10 +11,11 @@ namespace MonoGameJam4.Engine.Rendering
         public Vector2 ScreenMiddlePoint => ScreenSize / 2;
         private readonly Point _startSize;
 
-        public Window(GraphicsDeviceManager graphics, Point startSize)
+        public Window(GraphicsDeviceManager graphics, Point startSize, GameCenter gameCenter)
         {
             _graphics = graphics;
             _startSize = startSize;
+            gameCenter.Window.Title = "SPACEANGLE";
         }
 
         public override void OnInitialize()

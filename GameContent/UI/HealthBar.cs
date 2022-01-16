@@ -15,7 +15,7 @@ namespace MonoGameJam4.GameContent.UI
         private readonly Texture2D _frameTexture;
         private readonly Texture2D _fillingTexture;
 
-        private Player _player;
+        private readonly Player _player;
 
         private const int BarLength = 175;
         private static readonly Point BarPosition = new Point(110, 50);

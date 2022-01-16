@@ -22,7 +22,7 @@ namespace MonoGameJam4.Engine.Entities
 
             Vector2 move = new Vector2(amount, 0);
 
-            foreach (GameObject o in GameCenter.GetColliders(EntityType.Actor))
+            foreach (GameObject o in GameCenter.GetColliders())
             {
                 WorldObject worldObject = (WorldObject) o;
                 if (worldObject == this) continue;
@@ -40,7 +40,7 @@ namespace MonoGameJam4.Engine.Entities
 
             Vector2 move = new Vector2(0, amount);
 
-            foreach (GameObject o in GameCenter.GetColliders(EntityType.Actor))
+            foreach (GameObject o in GameCenter.GetColliders())
             {
                 WorldObject worldObject = (WorldObject) o;
                 if (worldObject == this) continue;

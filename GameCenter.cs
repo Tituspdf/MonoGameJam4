@@ -120,13 +120,13 @@ namespace MonoGameJam4
 
             SpriteBatch.Begin();
             Rendered?.Invoke();
-            
+
             // debug point in the middle of the screen
             // Texture2D debugTexture = Content.Load<Texture2D>("Square");
             // SpriteBatch.Draw(debugTexture,
             //     new Rectangle(GameWindow.ScreenMiddlePoint.ToPoint(), (Vector2.One * 2).ToPoint()), null, Color.Green,
             //     0, debugTexture.Bounds.Center.ToVector2(), SpriteEffects.None, 1);
-            
+
             foreach (GameObject obj in GameObjects)
             {
                 IRenderCall call = obj as IRenderCall;
@@ -137,25 +137,15 @@ namespace MonoGameJam4
             base.Draw(gameTime);
         }
 
-        public GameObject[] GetColliders(EntityType type)
+        public WorldObject[] GetColliders()
         {
-            switch (type)
+            List<WorldObject> actors = new List<WorldObject>();
+            foreach (GameObject gameObject in GameObjects)
             {
-                case EntityType.Actor:
-                {
-                    List<WorldObject> actors = new List<WorldObject>();
-                    foreach (GameObject gameObject in GameObjects)
-                    {
-                        if (gameObject is WorldObject {Colliding: true} actor) actors.Add(actor);
-                    }
-
-                    return actors.ToArray();
-                }
-                case EntityType.Solid:
-                    throw new NotImplementedException("Solid collision is not implemented yet");
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+                if (gameObject is WorldObject {Colliding: true} actor) actors.Add(actor);
             }
+
+            return actors.ToArray();
         }
     }
 }

@@ -76,7 +76,7 @@ namespace MonoGameJam4
             GameObjects.Add(player);
             // GameObjects.Add(new Box(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "box", true, "Square"));
             GameObjects.Add(new WorldBorder(this, new Transform(), "Bounds"));
-            GameObjects.Add(new Enemy(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "Enemy", true));
+            GameObjects.Add(new EnemySpawner(this, new Transform(), "EnemySpawner"));
 
             GameObjects.Add(new HealthBar(this, new Transform(), "HealthBar", player));
             GameObjects.Add(new BulletDisplay(this, new Transform(), "BulletDisplay", player));

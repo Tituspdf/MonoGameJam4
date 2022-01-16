@@ -12,8 +12,8 @@ namespace MonoGameJam4.GameContent.UI
     public class HealthBar : GameObject, IRenderCall
     {
         private readonly Texture2D _heartTexture;
-        private Texture2D _frameTexture;
-        private Texture2D _fillingTexture;
+        private readonly Texture2D _frameTexture;
+        private readonly Texture2D _fillingTexture;
 
         private Player _player;
 

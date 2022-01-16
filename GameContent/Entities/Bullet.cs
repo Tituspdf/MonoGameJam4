@@ -44,7 +44,7 @@ namespace MonoGameJam4.GameContent.Entities
         {
             base.Deconstruct();
             Renderer.Deconstruct();
-            ParticleData data = new ParticleData(30, Color.White, GameCenter.ContentLoader.Textures["Point"], 1.35f,
+            ParticleData data = new ParticleData(30, Color.White, GameCenter.ContentLoader.Textures["Point"], new RandomFloat(0.78f, 1.245f),
                 new Vector2(0.1f), new RandomFloat(0.2f, 0.6f));
             GameCenter.GameObjects.Add(new ParticleSystem(GameCenter,
                 new Transform(Transform.Position, Transform.Scale, 0), "BulletParticle", data));

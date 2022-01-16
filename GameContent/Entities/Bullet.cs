@@ -11,7 +11,7 @@ using MonoGameJam4.GameContent.Interfaces;
 
 namespace MonoGameJam4.GameContent.Entities
 {
-    public class Bullet : WorldObject, IRendering
+    public class Bullet : WorldObject, IRendering, IResettable
     {
         public static readonly Vector2 Size = new Vector2(1) * 0.3f;
 
@@ -48,6 +48,11 @@ namespace MonoGameJam4.GameContent.Entities
                 new Vector2(0.1f), new RandomFloat(0.2f, 0.6f));
             GameCenter.GameObjects.Add(new ParticleSystem(GameCenter,
                 new Transform(Transform.Position, Transform.Scale, 0), "BulletParticle", data));
+        }
+
+        public void Reset()
+        {
+            Deconstruct();
         }
     }
 }

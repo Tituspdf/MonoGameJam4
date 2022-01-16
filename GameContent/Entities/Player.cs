@@ -18,11 +18,16 @@ namespace MonoGameJam4.GameContent.Entities
         private float _bulletOffset = 1f;
         private float _bulletVelocity = 5;
 
+        private const float MaxHealth = 100;
+        private float _currentHealth;
+        
         public Player(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name, true)
         {
             Renderer = new Renderer(this, "Player");
             _input = gameCenter.InputManagement;
             _input.GetCallbackMouse(MouseElement.LeftButton).Invoked += OnMouse;
+
+            _currentHealth = MaxHealth;
         }
 
         private void OnMouse()

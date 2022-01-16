@@ -36,3 +36,6 @@ debugged mouse event invoking, first version of the bullets, component deconstru
 
 Day 12 - 15.01.2022
 random float method, bigger screen, bullet destroy particle, health for the enemy and die particle for enemy 
+
+Day 13 - 16.01.2022
+random lifetime and velocity for particles

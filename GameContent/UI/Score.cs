@@ -13,23 +13,32 @@ namespace MonoGameJam4.GameContent.UI
     {
         private readonly SpriteFont _font;
         private readonly Texture2D _squareTexture;
-        private readonly Vector2 _position;
+        private Vector2 _position;
 
         private Player _player;
-        
+        private GameCenter _gameCenter;
+
         public Score(GameCenter gameCenter, Transform transform, string name, Player player) : base(gameCenter, transform, name)
         {
             _player = player;
             _font = gameCenter.ContentLoader.ScoreFont;
             _squareTexture = gameCenter.ContentLoader.Textures["Square"];
-            _position = new Vector2(gameCenter.GameWindow.ScreenMiddlePoint.X, 150);
+            _gameCenter = gameCenter;
+
         }
 
         public void Render(SpriteBatch spriteBatch, Camera camera, Window gameWindow)
         {
+            _position = new Vector2(_gameCenter.GameWindow.ScreenMiddlePoint.X, 150);
             string text = _player.Score.ToString();
             Vector2 size = _font.MeasureString(text);
             spriteBatch.DrawString(_font, text, _position - size / 2, Color.White, 0, Vector2.Zero, Vector2.One, SpriteEffects.None, 0);
+
+            string upgradeState = $"level {_player.CurrentLevel} - next level at {(_player.CurrentLevel + 1) * 5}";
+            size = _font.MeasureString(upgradeState);
+            _position += new Vector2(0, 45);
+            spriteBatch.DrawString(_font, upgradeState, _position, Color.White, 0, size / 2, Vector2.One * 0.5f, SpriteEffects.None, 0);
+            
             
             if (_player.State != Player.PlayerState.Upgrading) return;
             

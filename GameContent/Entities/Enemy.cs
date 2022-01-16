@@ -93,7 +93,6 @@ namespace MonoGameJam4.GameContent.Entities
             {
                 Deconstruct();
                 (_player as Player)!.AddScore(1);
-                Debug.Log("points");
             }
         }
 

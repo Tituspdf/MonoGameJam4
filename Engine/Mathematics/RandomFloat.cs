@@ -1,9 +1,9 @@
 ﻿namespace MonoGameJam4.Engine.Mathematics
 {
-    public struct RandomFloat
+    public readonly struct RandomFloat
     {
-        private float _min;
-        private float _max;
+        private readonly float _min;
+        private readonly float _max;
 
         public float Number => Random.RandomFloat(_min, _max);
 

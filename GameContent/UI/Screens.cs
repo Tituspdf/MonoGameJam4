@@ -37,7 +37,8 @@ namespace MonoGameJam4.GameContent.UI
             {
                 case GameState.MainMenu:
                 {
-                    spriteBatch.Draw(_squareTexture, new Rectangle(Point.Zero, gameWindow.ScreenSize.ToPoint()), null, Color.Black, 0, Vector2.Zero, SpriteEffects.None, 1);
+                    spriteBatch.Draw(_squareTexture, new Rectangle(Point.Zero, gameWindow.ScreenSize.ToPoint()), null, Color.Black, 0, Vector2.Zero, SpriteEffects.None, 0.9f);
+                    
                     string text = "Press 'SPACE' to play!";
                     Vector2 size = _fontNormal.MeasureString(text);
                     spriteBatch.DrawString(_fontNormal, text, new Vector2(50), Color.White, 0, Vector2.Zero,

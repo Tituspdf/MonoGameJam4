@@ -7,6 +7,7 @@ namespace MonoGameJam4.Engine.Rendering
     public class ContentLoader
     {
         public Dictionary<string, Texture2D> Textures;
+        public SpriteFont Font { get; private set; }
         
         public ContentLoader()
         {
@@ -15,6 +16,8 @@ namespace MonoGameJam4.Engine.Rendering
 
         public void LoadContend(ContentManager contentManager)
         {
+            Font = contentManager.Load<SpriteFont>("Font");
+            
             Textures.Add("Player", contentManager.Load<Texture2D>("Triangle"));
             Textures.Add("Square", contentManager.Load<Texture2D>("Square"));
             Textures.Add("Point", contentManager.Load<Texture2D>("Point"));

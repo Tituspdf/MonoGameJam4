@@ -25,6 +25,13 @@
 /processorParam:TextureFormat=Color
 /build:EmptyPoint.png
 
+#begin Font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Font.spritefont
+
 #begin Frame.png
 /importer:TextureImporter
 /processor:TextureProcessor

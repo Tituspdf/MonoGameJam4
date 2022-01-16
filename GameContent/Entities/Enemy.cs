@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.Xna.Framework;
 using MonoGameJam4.Engine;
 using MonoGameJam4.Engine.Debugging;
@@ -46,7 +45,10 @@ namespace MonoGameJam4.GameContent.Entities
 
         private void OnCollision(CollidingObject obj)
         {
-            
+            if (obj.Name != "Player") return;
+
+            (_player as Player)?.EnemyHit();
+            Deconstruct();
         }
 
         public void Hit()

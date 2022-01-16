@@ -50,5 +50,10 @@ namespace MonoGameJam4.GameContent.Entities
             _normalizedLookDirection = lookDir;
             _normalizedLookDirection.Normalize();
         }
+
+        public void EnemyHit()
+        {
+            
+        }
     }
 }

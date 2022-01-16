@@ -17,8 +17,6 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
         private readonly Texture2D _texture; 
         /// <summary> speed of the particle </summary>
         private readonly Vector2 _velocity; 
-        /// <summary> angle changing speed </summary>
-        private readonly float _angularVelocity; 
 
         /// <summary>the color of the particle</summary>
         private readonly Color _color; 
@@ -38,7 +36,6 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
         {
             LiveTime += Time.DeltaTime;
             Transform.Position += _velocity * Time.DeltaTime;
-            Transform.Rotation += _angularVelocity * Time.DeltaTime;
         }
 
         public void Render(SpriteBatch spriteBatch, Camera camera, Window window)

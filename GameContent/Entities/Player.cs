@@ -25,6 +25,9 @@ namespace MonoGameJam4.GameContent.Entities
         /// <summary> the amount of health which is left (value between 0 and 1 </summary>
         public float HealthProgress => _currentHealth / MaxHealth;
 
+        public const int MaxBullets = 5;
+        public int CurrentBullets;
+
         public Player(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name, true)
         {
             Renderer = new Renderer(this, "Player");
@@ -32,6 +35,8 @@ namespace MonoGameJam4.GameContent.Entities
             _input.GetCallbackMouse(MouseElement.LeftButton).Invoked += OnMouse;
 
             _currentHealth = MaxHealth;
+
+            CurrentBullets = MaxBullets;
         }
 
         private void OnMouse()

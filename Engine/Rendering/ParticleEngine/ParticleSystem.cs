@@ -5,18 +5,39 @@ using Microsoft.Xna.Framework.Graphics;
 using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.Interfaces;
+using MonoGameJam4.Engine.Mathematics;
 using MonoGameJam4.Engine.WorldSpace;
+using Random = System.Random;
 
 namespace MonoGameJam4.Engine.Rendering.ParticleEngine
 {
     public struct ParticleData
     {
+        private enum GetMode { Random, Static,}
+        
         public int Amount;
         public Color Color;
         public readonly Texture2D Texture;
         public readonly float LifeTime;
         public Vector2 Size;
-        public readonly float Velocity;
+        
+        // velocity variables
+        private readonly GetMode _velocityGetMode;
+        private readonly float _velocityStatic;
+        private readonly RandomFloat _velocityRandom;
+
+        public readonly float Velocity
+        {
+            get
+            {
+                return _velocityGetMode switch
+                {
+                    GetMode.Random => _velocityRandom.Number,
+                    GetMode.Static => _velocityStatic,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+            }
+        }
 
         public ParticleData(int amount, Color color, Texture2D texture, float lifeTime, Vector2 size, float velocity)
         {
@@ -25,7 +46,23 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
             Texture = texture;
             LifeTime = lifeTime;
             Size = size;
-            Velocity = velocity;
+            
+            _velocityGetMode = GetMode.Static;
+            _velocityStatic = velocity;
+            _velocityRandom = new RandomFloat(); // it must have a default value
+        }
+        
+        public ParticleData(int amount, Color color, Texture2D texture, float lifeTime, Vector2 size, RandomFloat velocity)
+        {
+            Amount = amount;
+            Color = color;
+            Texture = texture;
+            LifeTime = lifeTime;
+            Size = size;
+            
+            _velocityGetMode = GetMode.Random;
+            _velocityRandom = velocity;
+            _velocityStatic = 0;
         }
     }
 

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using MonoGameJam4.Engine;
-using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.Input;
 using MonoGameJam4.Engine.Interfaces;
@@ -11,10 +9,11 @@ using MonoGameJam4.Engine.Mathematics;
 using MonoGameJam4.Engine.Rendering;
 using MonoGameJam4.Engine.Rendering.ParticleEngine;
 using MonoGameJam4.Engine.WorldSpace;
+using MonoGameJam4.GameContent.Interfaces;
 
 namespace MonoGameJam4.GameContent.Entities
 {
-    public class Player : WorldObject, IRendering
+    public class Player : WorldObject, IRendering, IResettable
     {
         public enum PlayerState
         {
@@ -155,7 +154,7 @@ namespace MonoGameJam4.GameContent.Entities
 
             if (_currentHealth < 0)
             {
-                Debug.Log("Death");
+                OnDeath();
             }
 
             if (_currentHealth > MaxHealth)
@@ -197,6 +196,20 @@ namespace MonoGameJam4.GameContent.Entities
             if (Score % 10 != 0) return;
             MaxBullets++;
             MaxBullets = MathHelper.Clamp(MaxBullets, 5, 10);
+        }
+
+        private void OnDeath()
+        {
+            
+        }
+
+        public void Reset()
+        {
+            HealthRegeneration = 0.01f;
+            MaxBullets = 5;
+            BulletTime = 1.5f;
+            _bulletVelocity = 5;
+            CurrentLevel = 0;
         }
     }
 }

@@ -26,7 +26,7 @@ namespace MonoGameJam4.GameContent.Entities
         private GameObject _player;
         public Renderer Renderer { get; set; }
 
-        private float _speed = 0.7f;
+        private float _speed = 2.5f;
 
         private const float BulletDamage = 20;
         private const float MaxHealth = 40;
@@ -66,6 +66,7 @@ namespace MonoGameJam4.GameContent.Entities
                 case BehaviorState.Attack:
                 {
                     Vector2 movement = _player.Transform.Position - Transform.Position;
+                    movement.Normalize();
                     movement *= Time.DeltaTime * _speed;
                     MoveX(movement.X, OnCollision);
                     MoveY(movement.Y, OnCollision);
@@ -94,7 +95,8 @@ namespace MonoGameJam4.GameContent.Entities
             if (_health <= 0)
             {
                 Deconstruct();
-                (_player as Player)?.AddScore(1);
+                (_player as Player)!.AddScore(1);
+                Debug.Log("points");
             }
         }
 
@@ -106,7 +108,6 @@ namespace MonoGameJam4.GameContent.Entities
             GameCenter.GameObjects.Add(new ParticleSystem(GameCenter,
                 new Transform(Transform.Position, Transform.Scale, 0), "EnemyDestroyParticle", data));
             
-            _player = null;
             base.Deconstruct();
         }
     }

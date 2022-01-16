@@ -85,7 +85,7 @@ namespace MonoGameJam4.GameContent.Entities
 
         private void OnMouse()
         {
-            if (CurrentBullets == 0) return;
+            if (State != PlayerState.Fighting || CurrentBullets == 0) return;
 
             GameCenter.GameObjects.Add(new Bullet(GameCenter,
                 new Transform(Transform.Position + _normalizedLookDirection * _bulletOffset, Bullet.Size, 0), "bullet",

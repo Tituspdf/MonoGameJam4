@@ -60,8 +60,6 @@ namespace MonoGameJam4
             Camera = new Camera(this, new Transform(Vector2.Zero, Vector2.Zero, 0), "Camera", GameWindow);
             GameObjects.Add(Camera);
 
-            InputManagement.GetCallback(Keys.Space).Invoked += () => { Debug.LogError("Hello World"); };
-
             foreach (EngineObject engineObject in _engineClasses)
             {
                 engineObject.OnInitialize();

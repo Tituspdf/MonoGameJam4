@@ -79,6 +79,7 @@ namespace MonoGameJam4
             GameObjects.Add(new Enemy(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "Enemy", true));
             
             GameObjects.Add(new HealthBar(this, new Transform(), "HealthBar", player));
+            GameObjects.Add(new BulletDisplay(this, new Transform(), "BulletDisplay", player));
         }
 
         protected override void LoadContent()

@@ -22,6 +22,8 @@ namespace MonoGameJam4.GameContent.Entities
         private float _currentHealth;
         private const float EnemyDamage = 15;
         private const float HealthRegeneration = 0.01f;
+        /// <summary> the amount of health which is left (value between 0 and 1 </summary>
+        public float HealthProgress => _currentHealth / MaxHealth;
 
         public Player(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name, true)
         {

@@ -18,14 +18,14 @@ namespace MonoGameJam4.GameContent.UI
             Play,
         }
 
-        private GameState _state;
+        public GameState State;
 
         private SpriteFont _fontNormal;
         private Texture2D _squareTexture;
 
         public Screens(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name)
         {
-            _state = GameState.MainMenu;
+            State = GameState.MainMenu;
             _fontNormal = gameCenter.ContentLoader.ScoreFont;
             _squareTexture = gameCenter.ContentLoader.Textures["Square"];
             Time.Scale = 0;
@@ -33,7 +33,7 @@ namespace MonoGameJam4.GameContent.UI
 
         public void Render(SpriteBatch spriteBatch, Camera camera, Window gameWindow)
         {
-            switch (_state)
+            switch (State)
             {
                 case GameState.MainMenu:
                 {

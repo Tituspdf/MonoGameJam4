@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using MonoGameJam4.Engine;
@@ -200,7 +201,10 @@ namespace MonoGameJam4.GameContent.Entities
 
         private void OnDeath()
         {
-            
+            foreach (GameObject gameObject in GameCenter.GameObjects.Where(o => o is IResettable))
+            {
+                (gameObject as IResettable)?.Reset();
+            }
         }
 
         public void Reset()

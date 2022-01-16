@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.Interfaces;
@@ -16,7 +17,11 @@ namespace MonoGameJam4.GameContent.UI
 
         private Player _player;
 
-        public HealthBar(GameCenter gameCenter, Transform transform, string name, Player player) : base(gameCenter, transform, name)
+        private const int BarLength = 175;
+        private static readonly Point BarPosition = new Point(110, 50);
+
+        public HealthBar(GameCenter gameCenter, Transform transform, string name, Player player) : base(gameCenter,
+            transform, name)
         {
             _player = player;
             _frameTexture = gameCenter.ContentLoader.Textures["Frame"];
@@ -27,7 +32,10 @@ namespace MonoGameJam4.GameContent.UI
         public void Render(SpriteBatch spriteBatch, Camera camera, Window gameWindow)
         {
             spriteBatch.Draw(_heartTexture, new Rectangle(new Point(50), new Point(50)), Color.White);
-            spriteBatch.Draw(_frameTexture, new Rectangle(new Point(110, 50), new Point(175, 50)), Color.White);
+            spriteBatch.Draw(_frameTexture, new Rectangle(BarPosition, new Point(BarLength, 50)), Color.White);
+            spriteBatch.Draw(_fillingTexture,
+                new Rectangle(BarPosition, new Point((int) Math.Round((float) BarLength * _player.HealthProgress), 50)),
+                Color.White);
         }
     }
 }

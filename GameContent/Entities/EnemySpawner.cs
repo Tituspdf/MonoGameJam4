@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using MonoGameJam4.Engine;
+using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.Mathematics;
 using MonoGameJam4.Engine.WorldSpace;
@@ -9,7 +10,7 @@ namespace MonoGameJam4.GameContent.Entities
     public class EnemySpawner : GameObject
     {
         private float _spawnDelay = 5f;
-        private float _playerDistance = 4f;
+        private float _playerDistance = 3f;
         private float _spawnTimer;
 
         private readonly float _minX;
@@ -55,7 +56,7 @@ namespace MonoGameJam4.GameContent.Entities
                 distance = (position - _player.Transform.Position).Length();
             } while (distance <= _playerDistance);
 
-            GameCenter.GameObjects.Add(new Enemy(GameCenter, new Transform(position, Vector2.One, 0), "Enemy",
+            GameCenter.GameObjects.Add(new Enemy(GameCenter, new Transform(position, Vector2.One * 0.1f, 0), "Enemy",
                 true));
         }
     }

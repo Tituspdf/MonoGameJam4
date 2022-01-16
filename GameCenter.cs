@@ -13,6 +13,7 @@ using MonoGameJam4.Engine.Rendering;
 using MonoGameJam4.Engine.WorldSpace;
 using MonoGameJam4.GameContent;
 using MonoGameJam4.GameContent.Entities;
+using MonoGameJam4.GameContent.UI;
 using IUpdateable = MonoGameJam4.Engine.Interfaces.IUpdateable;
 
 namespace MonoGameJam4
@@ -75,6 +76,8 @@ namespace MonoGameJam4
             // GameObjects.Add(new Box(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "box", true, "Square"));
             GameObjects.Add(new WorldBorder(this, new Transform(), "Bounds"));
             GameObjects.Add(new Enemy(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "Enemy", true));
+            
+            GameObjects.Add(new HealthBar(this, new Transform(), "HealthBar"));
         }
 
         protected override void LoadContent()

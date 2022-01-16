@@ -11,6 +11,7 @@ using MonoGameJam4.Engine.Rendering;
 using MonoGameJam4.Engine.Rendering.ParticleEngine;
 using MonoGameJam4.Engine.WorldSpace;
 using MonoGameJam4.GameContent.Interfaces;
+using MonoGameJam4.GameContent.UI;
 
 namespace MonoGameJam4.GameContent.Entities
 {
@@ -56,8 +57,11 @@ namespace MonoGameJam4.GameContent.Entities
         public int CurrentLevel;
         public int NextLevel;
 
-        public Player(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name, true)
+        private readonly Screens _screens;
+        
+        public Player(GameCenter gameCenter, Transform transform, string name, Screens screens) : base(gameCenter, transform, name, true)
         {
+            _screens = screens;
             Renderer = new Renderer(this, "Player");
             _input = gameCenter.InputManagement;
             _input.GetCallbackMouse(MouseElement.LeftButton).Invoked += OnMouse;

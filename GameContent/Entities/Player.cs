@@ -27,6 +27,8 @@ namespace MonoGameJam4.GameContent.Entities
 
         public const int MaxBullets = 5;
         public int CurrentBullets;
+        private float _bulletTimer;
+        private const float BulletTime = 1.5f;
 
         public Player(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name, true)
         {
@@ -37,6 +39,7 @@ namespace MonoGameJam4.GameContent.Entities
             _currentHealth = MaxHealth;
 
             CurrentBullets = MaxBullets;
+            _bulletTimer = BulletTime;
         }
 
         private void OnMouse()
@@ -66,6 +69,17 @@ namespace MonoGameJam4.GameContent.Entities
             _normalizedLookDirection.Normalize();
 
             ChangeHealth(HealthRegeneration);
+
+            // bullet regeneration 
+            if (MaxBullets <= CurrentBullets) return;
+            
+            _bulletTimer -= Time.DeltaTime;
+
+            if (_bulletTimer < 0)
+            {
+                CurrentBullets += 1;
+                _bulletTimer = BulletTime;
+            }
         }
 
         public void EnemyHit()

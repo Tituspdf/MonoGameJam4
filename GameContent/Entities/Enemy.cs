@@ -79,12 +79,9 @@ namespace MonoGameJam4.GameContent.Entities
 
         private void OnCollision(CollidingObject obj)
         {
-            // if (obj.Name != "Player") return;
-
             if (!(obj is Player player)) return;
             player.EnemyHit();
             Deconstruct();
-            // Deconstruct();
         }
 
         public void Hit()

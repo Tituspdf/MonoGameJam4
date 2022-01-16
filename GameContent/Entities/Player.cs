@@ -30,6 +30,8 @@ namespace MonoGameJam4.GameContent.Entities
         private float _bulletTimer;
         private const float BulletTime = 1.5f;
 
+        public int Score { get; private set; }
+
         public Player(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name, true)
         {
             Renderer = new Renderer(this, "Player");
@@ -40,6 +42,8 @@ namespace MonoGameJam4.GameContent.Entities
 
             CurrentBullets = MaxBullets;
             _bulletTimer = BulletTime;
+
+            Score = 0;
         }
 
         private void OnMouse()

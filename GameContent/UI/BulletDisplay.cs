@@ -31,13 +31,13 @@ namespace MonoGameJam4.GameContent.UI
 
         public void Render(SpriteBatch spriteBatch, Camera camera, Window gameWindow)
         {
-            spriteBatch.Draw(_icon, new Rectangle(_anchorRight - new Point(50, 0), new Point(50)), null, Color.White);
+            spriteBatch.Draw(_icon, new Rectangle(_anchorRight - new Point(50, 0), new Point(50)), null, Color.White, 0, Vector2.Zero,  SpriteEffects.None, 0);
 
             Point bulletOrigin = _anchorRight + new Point(-55, 5);
             for (int i = 0; i < _player.MaxBullets; i++)
             {
                 Texture2D draw = i + 1 > _player.CurrentBullets ? _empty : _full;
-                spriteBatch.Draw(draw, new Rectangle(bulletOrigin - new Point((i + 1) * 45, 0), new Point(40)), Color.White);
+                spriteBatch.Draw(draw, new Rectangle(bulletOrigin - new Point((i + 1) * 45, 0), new Point(40)), null, Color.White, 0, Vector2.Zero, SpriteEffects.None, 0);
             }
         }
     }

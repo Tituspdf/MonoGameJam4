@@ -34,7 +34,7 @@ namespace MonoGameJam4.GameContent.UI
             spriteBatch.Draw(_icon, new Rectangle(_anchorRight - new Point(50, 0), new Point(50)), null, Color.White);
 
             Point bulletOrigin = _anchorRight + new Point(-55, 5);
-            for (int i = 0; i < Player.MaxBullets; i++)
+            for (int i = 0; i < _player.MaxBullets; i++)
             {
                 Texture2D draw = i + 1 > _player.CurrentBullets ? _empty : _full;
                 spriteBatch.Draw(draw, new Rectangle(bulletOrigin - new Point((i + 1) * 45, 0), new Point(40)), Color.White);

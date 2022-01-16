@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.Interfaces;
 using MonoGameJam4.Engine.Rendering;
@@ -16,8 +17,9 @@ namespace MonoGameJam4.GameContent.UI
         private readonly Texture2D _icon;
 
         private readonly Point _anchorRight;
-        
-        public BulletDisplay(GameCenter gameCenter, Transform transform, string name, Player player) : base(gameCenter, transform, name)
+
+        public BulletDisplay(GameCenter gameCenter, Transform transform, string name, Player player) : base(gameCenter,
+            transform, name)
         {
             _player = player;
             _full = gameCenter.ContentLoader.Textures["Point"];
@@ -29,7 +31,14 @@ namespace MonoGameJam4.GameContent.UI
 
         public void Render(SpriteBatch spriteBatch, Camera camera, Window gameWindow)
         {
-            
+            spriteBatch.Draw(_icon, new Rectangle(_anchorRight - new Point(50, 0), new Point(50)), null, Color.White);
+
+            Point bulletOrigin = _anchorRight + new Point(-55, 5);
+            for (int i = 0; i < Player.MaxBullets; i++)
+            {
+                Texture2D draw = i + 1 > _player.CurrentBullets ? _empty : _full;
+                spriteBatch.Draw(draw, new Rectangle(bulletOrigin - new Point((i + 1) * 45, 0), new Point(40)), Color.White);
+            }
         }
     }
 }

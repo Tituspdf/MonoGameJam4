@@ -37,6 +37,13 @@
 /processorParam:TextureFormat=Color
 /build:Frame.png
 
+#begin Header.spritefont
+/importer:FontDescriptionImporter
+/processor:LocalizedFontProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Header.spritefont
+
 #begin Heart.png
 /importer:TextureImporter
 /processor:TextureProcessor

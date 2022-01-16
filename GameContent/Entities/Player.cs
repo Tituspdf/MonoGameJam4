@@ -41,9 +41,13 @@ namespace MonoGameJam4.GameContent.Entities
 
         private void OnMouse()
         {
+            if (CurrentBullets == 0) return;
+            
             GameCenter.GameObjects.Add(new Bullet(GameCenter,
                 new Transform(Transform.Position + _normalizedLookDirection * _bulletOffset, Bullet.Size, 0), "bullet",
                 true, _normalizedLookDirection * _bulletVelocity));
+
+            CurrentBullets -= 1;
         }
 
         public override void Update(GameTime gameTime)

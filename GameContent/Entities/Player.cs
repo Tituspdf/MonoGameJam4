@@ -55,5 +55,15 @@ namespace MonoGameJam4.GameContent.Entities
         {
             
         }
+
+        private void ChangeHealth(float value)
+        {
+            _currentHealth += value;
+
+            if (_currentHealth < 0)
+            {
+                Debug.Log("Death");
+            }
+        }
     }
 }

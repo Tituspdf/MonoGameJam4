@@ -18,14 +18,29 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
         public int Amount;
         public Color Color;
         public readonly Texture2D Texture;
-        public readonly float LifeTime;
         public Vector2 Size;
+        
+        // life time variables
+        private readonly GetMode _lifeTimeGetMode;
+        private readonly float _lifeTimeStatic;
+        private readonly RandomFloat _lifeTimeRandom;
+        public readonly float LifeTime
+        {
+            get
+            {
+                return _lifeTimeGetMode switch
+                {
+                    GetMode.Random => _lifeTimeRandom.Number,
+                    GetMode.Static => _lifeTimeStatic,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+            }
+        }
         
         // velocity variables
         private readonly GetMode _velocityGetMode;
         private readonly float _velocityStatic;
         private readonly RandomFloat _velocityRandom;
-
         public readonly float Velocity
         {
             get
@@ -44,25 +59,31 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
             Amount = amount;
             Color = color;
             Texture = texture;
-            LifeTime = lifeTime;
             Size = size;
             
             _velocityGetMode = GetMode.Static;
             _velocityStatic = velocity;
             _velocityRandom = new RandomFloat(); // it must have a default value
+
+            _lifeTimeGetMode = GetMode.Static;
+            _lifeTimeStatic = lifeTime;
+            _lifeTimeRandom = new RandomFloat();
         }
         
-        public ParticleData(int amount, Color color, Texture2D texture, float lifeTime, Vector2 size, RandomFloat velocity)
+        public ParticleData(int amount, Color color, Texture2D texture, RandomFloat randomFloat, Vector2 size, RandomFloat velocity)
         {
             Amount = amount;
             Color = color;
             Texture = texture;
-            LifeTime = lifeTime;
             Size = size;
             
             _velocityGetMode = GetMode.Random;
             _velocityRandom = velocity;
             _velocityStatic = 0;
+            
+            _lifeTimeGetMode = GetMode.Random;
+            _lifeTimeStatic = 0;
+            _lifeTimeRandom = randomFloat;
         }
     }
 

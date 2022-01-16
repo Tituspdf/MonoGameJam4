@@ -21,6 +21,7 @@ namespace MonoGameJam4.GameContent.Entities
         private const float MaxHealth = 100;
         private float _currentHealth;
         private const float EnemyDamage = 15;
+        private const float HealthRegeneration = 0.01f;
         
         public Player(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name, true)
         {
@@ -50,6 +51,8 @@ namespace MonoGameJam4.GameContent.Entities
 
             _normalizedLookDirection = lookDir;
             _normalizedLookDirection.Normalize();
+            
+            ChangeHealth(HealthRegeneration);
         }
 
         public void EnemyHit()

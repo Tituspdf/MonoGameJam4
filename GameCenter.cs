@@ -71,8 +71,7 @@ namespace MonoGameJam4
         private void Start()
         {
             Screens screen = new Screens(this, new Transform(), "Screens");
-            GameObjects.Add(screen);
-            
+
             Player player = new Player(this, new Transform(Vector2.Zero, Vector2.One, 0), "Player");
             GameObjects.Add(player);
             // GameObjects.Add(new Box(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "box", true, "Square"));
@@ -83,6 +82,8 @@ namespace MonoGameJam4
             GameObjects.Add(new BulletDisplay(this, new Transform(), "BulletDisplay", player));
 
             GameObjects.Add(new Score(this, new Transform(), "ScoreDisplay", player));
+            
+            GameObjects.Add(screen);
         }
 
         protected override void LoadContent()

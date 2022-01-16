@@ -14,8 +14,11 @@ namespace MonoGameJam4.GameContent.UI
         private Texture2D _frameTexture;
         private Texture2D _fillingTexture;
 
-        public HealthBar(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name)
+        private Player _player;
+
+        public HealthBar(GameCenter gameCenter, Transform transform, string name, Player player) : base(gameCenter, transform, name)
         {
+            _player = player;
             _frameTexture = gameCenter.ContentLoader.Textures["Frame"];
             _fillingTexture = gameCenter.ContentLoader.Textures["Square"];
             _heartTexture = gameCenter.ContentLoader.Textures["Heart"];

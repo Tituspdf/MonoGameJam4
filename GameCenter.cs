@@ -72,12 +72,13 @@ namespace MonoGameJam4
 
         private void Start()
         {
-            GameObjects.Add(new Player(this, new Transform(Vector2.Zero, Vector2.One, 0), "Player"));
+            Player player = new Player(this, new Transform(Vector2.Zero, Vector2.One, 0), "Player");
+            GameObjects.Add(player);
             // GameObjects.Add(new Box(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "box", true, "Square"));
             GameObjects.Add(new WorldBorder(this, new Transform(), "Bounds"));
             GameObjects.Add(new Enemy(this, new Transform(new Vector2(2, 2), Vector2.One, 0), "Enemy", true));
             
-            GameObjects.Add(new HealthBar(this, new Transform(), "HealthBar"));
+            GameObjects.Add(new HealthBar(this, new Transform(), "HealthBar", player));
         }
 
         protected override void LoadContent()

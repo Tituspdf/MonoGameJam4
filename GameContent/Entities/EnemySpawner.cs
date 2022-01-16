@@ -1,13 +1,13 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Linq;
+using Microsoft.Xna.Framework;
 using MonoGameJam4.Engine;
-using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Entities;
-using MonoGameJam4.Engine.Mathematics;
 using MonoGameJam4.Engine.WorldSpace;
+using MonoGameJam4.GameContent.Interfaces;
 
 namespace MonoGameJam4.GameContent.Entities
 {
-    public class EnemySpawner : GameObject
+    public class EnemySpawner : GameObject, IResettable
     {
         private float _spawnDelay = 5f;
         private float _spawnTimer;
@@ -17,7 +17,8 @@ namespace MonoGameJam4.GameContent.Entities
         private int _wave;
         private int _enemiesPerWave = 1;
 
-        public EnemySpawner(GameCenter gameCenter, Transform transform, string name, Player player) : base(gameCenter, transform, name)
+        public EnemySpawner(GameCenter gameCenter, Transform transform, string name, Player player) : base(gameCenter,
+            transform, name)
         {
             _player = player;
             _spawnTimer = _spawnDelay;
@@ -49,6 +50,18 @@ namespace MonoGameJam4.GameContent.Entities
             _wave++;
 
             if (_wave % 4 == 0) _enemiesPerWave++;
+        }
+
+        public void Reset()
+        {
+            foreach (GameObject gameObject in GameCenter.GameObjects.Where(o => o is Enemy))
+            {
+                Enemy enemy = (Enemy) gameObject;
+                enemy.Deconstruct();
+            }
+
+            _wave = 0;
+            _enemiesPerWave = 0;
         }
     }
 }

@@ -224,7 +224,7 @@ namespace MonoGameJam4.GameContent.Entities
             CurrentLevel = 0;
             _currentHealth = MaxHealth;
             Score = 0;
-
+            Time.Scale = 0;
             _screens.State = Screens.GameState.Death;
         }
     }

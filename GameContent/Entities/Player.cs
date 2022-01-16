@@ -193,10 +193,10 @@ namespace MonoGameJam4.GameContent.Entities
             CurrentLevel += 1;
 
             HealthRegeneration *= 1.2f;
-            HealthRegeneration = MathHelper.Clamp(HealthRegeneration, 0, 0.9f);
+            HealthRegeneration = MathHelper.Clamp(HealthRegeneration, 0, 0.4f);
 
             BulletTime *= 0.8f;
-            BulletTime = MathHelper.Clamp(BulletTime, 0.2f, 10);
+            BulletTime = MathHelper.Clamp(BulletTime, 0.4f, 10);
 
             _bulletVelocity *= 1.1f;
             _bulletVelocity = MathHelper.Clamp(_bulletVelocity, 0, 10f);

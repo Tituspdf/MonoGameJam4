@@ -59,7 +59,7 @@ namespace MonoGameJam4.Engine.Rendering.ParticleEngine
             Rectangle destinationRectangle = new Rectangle((int) (relativePosition.X), (int) (relativePosition.Y),
                 (int) size.X, (int) size.Y);
 
-            spriteBatch.Draw(_texture, destinationRectangle, null, _color, rotation, origin, SpriteEffects.None, 1);
+            spriteBatch.Draw(_texture, destinationRectangle, null, _color, rotation, origin, SpriteEffects.None, 0);
         }
     }
 }

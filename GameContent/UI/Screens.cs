@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using MonoGameJam4.Engine;
 using MonoGameJam4.Engine.Entities;
 using MonoGameJam4.Engine.Interfaces;
@@ -29,6 +30,31 @@ namespace MonoGameJam4.GameContent.UI
             _fontNormal = gameCenter.ContentLoader.ScoreFont;
             _squareTexture = gameCenter.ContentLoader.Textures["Square"];
             Time.Scale = 0;
+            
+            gameCenter.InputManagement.GetCallback(Keys.Space).Invoked += OnSpace;
+        }
+
+        private void OnSpace()
+        {
+            switch (State)
+            {
+                case GameState.MainMenu:
+                {
+                    State = GameState.Play;
+                    Time.Scale = 1;
+                    break;
+                }
+                case GameState.Death:
+                {
+                    State = GameState.Play;
+                    Time.Scale = 1;
+                    break;
+                }
+                case GameState.Play:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         public void Render(SpriteBatch spriteBatch, Camera camera, Window gameWindow)
@@ -46,7 +72,16 @@ namespace MonoGameJam4.GameContent.UI
                     break;
                 }
                 case GameState.Death:
+                {
+                    spriteBatch.Draw(_squareTexture, new Rectangle(Point.Zero, gameWindow.ScreenSize.ToPoint()), null,
+                        Color.Black, 0, Vector2.Zero, SpriteEffects.None, 0.9f);
+
+                    string text = "Press 'SPACE' to try again!";
+                    Vector2 size = _fontNormal.MeasureString(text);
+                    spriteBatch.DrawString(_fontNormal, text, new Vector2(50), Color.White, 0, Vector2.Zero,
+                        Vector2.One, SpriteEffects.None, 1);
                     break;
+                }
                 case GameState.Play:
                     break;
                 default:

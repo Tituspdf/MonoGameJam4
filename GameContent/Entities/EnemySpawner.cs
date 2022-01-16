@@ -20,10 +20,14 @@ namespace MonoGameJam4.GameContent.Entities
 
         private Player _player;
 
+        private int _wave;
+        private int _enemiesPerWave = 1;
+
         public EnemySpawner(GameCenter gameCenter, Transform transform, string name, Player player) : base(gameCenter, transform, name)
         {
             _player = player;
             _spawnTimer = _spawnDelay;
+            _wave = 0;
 
             Vector2 tl = gameCenter.Camera.ScreenToWorldPosition(new Vector2(0, 0));
             Vector2 br = gameCenter.Camera.ScreenToWorldPosition(gameCenter.GameWindow.ScreenSize);
@@ -48,16 +52,24 @@ namespace MonoGameJam4.GameContent.Entities
 
         private void Spawn()
         {
-            Vector2 position;
-            float distance;
-            do
+            for (int i = 0; i < _enemiesPerWave; i++)
             {
-                position = new Vector2(Random.RandomFloat(_minX, _maxX), Random.RandomFloat(_minY, _maxY));
-                distance = (position - _player.Transform.Position).Length();
-            } while (distance <= _playerDistance);
+                Vector2 position;
+                float distance;
+                do
+                {
+                    position = new Vector2(Random.RandomFloat(_minX, _maxX), Random.RandomFloat(_minY, _maxY));
+                    distance = (position - _player.Transform.Position).Length();
+                } while (distance <= _playerDistance);
 
-            GameCenter.GameObjects.Add(new Enemy(GameCenter, new Transform(position, Vector2.One * 0.1f, 0), "Enemy",
-                true));
+                GameCenter.GameObjects.Add(new Enemy(GameCenter, new Transform(position, Vector2.One * 0.1f, 0),
+                    "Enemy",
+                    true));
+            }
+
+            _wave++;
+
+            if (_wave % 4 == 0) _enemiesPerWave++;
         }
     }
 }

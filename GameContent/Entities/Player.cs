@@ -20,6 +20,7 @@ namespace MonoGameJam4.GameContent.Entities
 
         private const float MaxHealth = 100;
         private float _currentHealth;
+        private const float EnemyDamage = 15;
         
         public Player(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name, true)
         {
@@ -53,7 +54,7 @@ namespace MonoGameJam4.GameContent.Entities
 
         public void EnemyHit()
         {
-            
+            ChangeHealth(-EnemyDamage);
         }
 
         private void ChangeHealth(float value)

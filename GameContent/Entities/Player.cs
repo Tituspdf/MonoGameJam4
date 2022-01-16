@@ -65,6 +65,11 @@ namespace MonoGameJam4.GameContent.Entities
             {
                 Debug.Log("Death");
             }
+
+            if (_currentHealth > MaxHealth)
+            {
+                _currentHealth = MaxHealth;
+            }
         }
     }
 }

@@ -42,7 +42,7 @@ namespace MonoGameJam4.GameContent.Entities
         private const float MaxHealth = 100;
         private float _currentHealth;
         private const float EnemyDamage = 15;
-        private float HealthRegeneration = 0.01f;
+        private float HealthRegeneration = 0.05f;
 
         /// <summary> the amount of health which is left (value between 0 and 1 </summary>
         public float HealthProgress => _currentHealth / MaxHealth;
@@ -212,7 +212,7 @@ namespace MonoGameJam4.GameContent.Entities
 
         public void Reset()
         {
-            HealthRegeneration = 0.01f;
+            HealthRegeneration = 0.05f;
             MaxBullets = 5;
             BulletTime = 1.5f;
             CurrentBullets = MaxBullets;

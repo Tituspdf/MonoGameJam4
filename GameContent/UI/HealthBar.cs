@@ -34,7 +34,7 @@ namespace MonoGameJam4.GameContent.UI
             spriteBatch.Draw(_heartTexture, new Rectangle(new Point(50), new Point(50)), Color.White);
             spriteBatch.Draw(_frameTexture, new Rectangle(BarPosition, new Point(BarLength, 50)), Color.White);
             spriteBatch.Draw(_fillingTexture,
-                new Rectangle(BarPosition, new Point((int) Math.Round((float) BarLength * _player.HealthProgress), 50)),
+                new Rectangle(BarPosition, new Point((int) Math.Round(BarLength * _player.HealthProgress), 50)),
                 Color.White);
         }
     }

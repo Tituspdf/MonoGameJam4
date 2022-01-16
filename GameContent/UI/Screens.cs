@@ -21,11 +21,13 @@ namespace MonoGameJam4.GameContent.UI
         private GameState _state;
 
         private SpriteFont _fontNormal;
+        private Texture2D _squareTexture;
 
         public Screens(GameCenter gameCenter, Transform transform, string name) : base(gameCenter, transform, name)
         {
             _state = GameState.MainMenu;
             _fontNormal = gameCenter.ContentLoader.ScoreFont;
+            _squareTexture = gameCenter.ContentLoader.Textures["Square"];
             Time.Scale = 0;
         }
 
@@ -35,6 +37,7 @@ namespace MonoGameJam4.GameContent.UI
             {
                 case GameState.MainMenu:
                 {
+                    spriteBatch.Draw(_squareTexture, new Rectangle(Point.Zero, gameWindow.ScreenSize.ToPoint()), null, Color.Black, 0, Vector2.Zero, SpriteEffects.None, 1);
                     string text = "Press 'SPACE' to play!";
                     Vector2 size = _fontNormal.MeasureString(text);
                     spriteBatch.DrawString(_fontNormal, text, new Vector2(50), Color.White, 0, Vector2.Zero,

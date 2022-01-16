@@ -80,6 +80,8 @@ namespace MonoGameJam4
             
             GameObjects.Add(new HealthBar(this, new Transform(), "HealthBar", player));
             GameObjects.Add(new BulletDisplay(this, new Transform(), "BulletDisplay", player));
+            
+            GameObjects.Add(new Score(this, new Transform(), "ScoreDisplay"));
         }
 
         protected override void LoadContent()

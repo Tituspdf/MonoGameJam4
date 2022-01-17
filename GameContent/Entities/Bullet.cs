@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using MonoGameJam4.Engine;
 using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Entities;
@@ -16,6 +17,7 @@ namespace MonoGameJam4.GameContent.Entities
         public static readonly Vector2 Size = new Vector2(1) * 0.3f;
 
         private Vector2 _velocity;
+        private SoundEffect _explodeSound;
 
         public Renderer Renderer { get; set; }
 
@@ -25,6 +27,7 @@ namespace MonoGameJam4.GameContent.Entities
             _velocity = velocity;
             Renderer = new Renderer(this, "Point");
             gameCenter.ContentLoader.Sounds["Shoot"].Play();
+            _explodeSound = gameCenter.ContentLoader.Sounds["BulletExplode"];
         }
 
         public override void Update(GameTime gameTime)
@@ -39,6 +42,9 @@ namespace MonoGameJam4.GameContent.Entities
         {
             (obj as IHittable)?.Hit();
             Deconstruct();
+
+            if (obj.Name == "Wall")
+                _explodeSound.Play();
         }
 
         public override void Deconstruct()

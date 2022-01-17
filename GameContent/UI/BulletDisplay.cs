@@ -24,7 +24,7 @@ namespace MonoGameJam4.GameContent.UI
             _player = player;
             _full = gameCenter.ContentLoader.Textures["Point"];
             _empty = gameCenter.ContentLoader.Textures["EmptyPoint"];
-            _icon = gameCenter.ContentLoader.Textures["Square"];
+            _icon = gameCenter.ContentLoader.Textures["BulletImage"];
 
             _anchorRight = new Point((int) gameCenter.GameWindow.ScreenSize.X - 50, 50);
         }

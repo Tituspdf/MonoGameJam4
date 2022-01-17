@@ -10,7 +10,7 @@ namespace MonoGameJam4.GameContent.Entities
         
         public Box(GameCenter gameCenter, Transform transform, string name, bool colliding, string textureName) : base(gameCenter, transform, name, colliding)
         {
-            _renderer = new Renderer(this, textureName);
+            _renderer = new Renderer(this, textureName, 1);
         }
     }
 }

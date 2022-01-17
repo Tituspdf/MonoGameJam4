@@ -92,13 +92,18 @@ namespace MonoGameJam4.GameContent.UI
                 }
                 case GameState.Death:
                 {
-                    spriteBatch.Draw(_squareTexture, new Rectangle(Point.Zero, gameWindow.ScreenSize.ToPoint()), null,
-                        Color.Black, 0, Vector2.Zero, SpriteEffects.None, 0.9f);
+                    spriteBatch.Draw(_squareTexture, new Rectangle(gameWindow.ScreenMiddlePoint.ToPoint(), gameWindow.ScreenSize.ToPoint()), null,
+                        Color.Black, 0, _squareTexture.Bounds.Center.ToVector2(), SpriteEffects.None, 0.9f);
 
                     string text = "Press 'SPACE' to try again!";
                     Vector2 size = _fontNormal.MeasureString(text);
-                    spriteBatch.DrawString(_fontNormal, text, new Vector2(50), Color.White, 0, Vector2.Zero,
+                    spriteBatch.DrawString(_fontNormal, text, gameWindow.ScreenMiddlePoint, Color.White, 0, size / 2,
                         Vector2.One, SpriteEffects.None, 1);
+                    
+                    text = "You are Dead :O";
+                    size = _fontNormal.MeasureString(text);
+                    spriteBatch.DrawString(_fontNormal, text, gameWindow.ScreenMiddlePoint - new Vector2(0, 200), Color.White, 0, size / 2,
+                        Vector2.One * 2, SpriteEffects.None, 1);
                     break;
                 }
                 case GameState.Play:

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using MonoGameJam4.Engine;
 using MonoGameJam4.Engine.Debugging;
 using MonoGameJam4.Engine.Entities;
@@ -41,6 +42,7 @@ namespace MonoGameJam4.GameContent.Entities
         private readonly float _maxY;
         
         private float _playerDistance = 3f;
+        private SoundEffect _sound;
 
         public Enemy(GameCenter gameCenter, Transform transform, string name, bool colliding) : base(gameCenter,
             transform, name, colliding)
@@ -73,6 +75,8 @@ namespace MonoGameJam4.GameContent.Entities
             } while (distance <= _playerDistance && CheckOtherEnemies(position));
 
             transform.Position = position;
+
+            _sound = gameCenter.ContentLoader.Sounds["EnemyExplode"];
         }
 
         private bool CheckOtherEnemies(Vector2 position)
@@ -129,6 +133,7 @@ namespace MonoGameJam4.GameContent.Entities
 
             if (_health <= 0)
             {
+                _sound.Play();
                 Deconstruct();
                 (_player as Player)!.AddScore(1);
             }

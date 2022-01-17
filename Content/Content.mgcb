@@ -25,6 +25,12 @@
 /processorParam:TextureFormat=Color
 /build:BuelletImage.png
 
+#begin BulletExplode.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:BulletExplode.wav
+
 #begin EmptyPoint.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -103,6 +109,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:MonoGameLogo.png
+
+#begin PlayerHit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:PlayerHit.wav
 
 #begin Point.png
 /importer:TextureImporter

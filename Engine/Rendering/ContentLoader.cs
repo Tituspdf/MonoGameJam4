@@ -36,6 +36,8 @@ namespace MonoGameJam4.Engine.Rendering
             Sounds.Add("LevelUp", contentManager.Load<SoundEffect>("LevelUp"));
             Sounds.Add("Shoot", contentManager.Load<SoundEffect>("Shoot"));
             Sounds.Add("UpgradeRise", contentManager.Load<SoundEffect>("UpgradeRise"));
+            Sounds.Add("PlayerHit", contentManager.Load<SoundEffect>("PlayerHit"));
+            Sounds.Add("BulletExplode", contentManager.Load<SoundEffect>("BulletExplode"));
         }
     }
 }

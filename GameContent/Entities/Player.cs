@@ -62,6 +62,7 @@ namespace MonoGameJam4.GameContent.Entities
 
         private readonly SoundEffect _finishedSound;
         private readonly SoundEffect _upgradeSound;
+        private SoundEffect _hittedSound;
 
         public Player(GameCenter gameCenter, Transform transform, string name, Screens screens) : base(gameCenter, transform, name, true)
         {
@@ -85,6 +86,7 @@ namespace MonoGameJam4.GameContent.Entities
 
             _finishedSound = gameCenter.ContentLoader.Sounds["LevelUp"];
             _upgradeSound = gameCenter.ContentLoader.Sounds["UpgradeRise"];
+            _hittedSound = gameCenter.ContentLoader.Sounds["PlayerHit"];
         }
 
         private void OnUpgradeButton()
@@ -167,6 +169,7 @@ namespace MonoGameJam4.GameContent.Entities
         public void EnemyHit()
         {
             ChangeHealth(-EnemyDamage);
+            _hittedSound.Play();
         }
 
         private void ChangeHealth(float value)

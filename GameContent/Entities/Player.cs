@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 using MonoGameJam4.Engine;
 using MonoGameJam4.Engine.Entities;
@@ -58,7 +59,10 @@ namespace MonoGameJam4.GameContent.Entities
         public int NextLevel;
 
         private readonly Screens _screens;
-        
+
+        private readonly SoundEffect _finishedSound;
+        private readonly SoundEffect _upgradeSound;
+
         public Player(GameCenter gameCenter, Transform transform, string name, Screens screens) : base(gameCenter, transform, name, true)
         {
             _screens = screens;
@@ -78,14 +82,19 @@ namespace MonoGameJam4.GameContent.Entities
 
             CurrentLevel = 0;
             NextLevel = 1;
+
+            _finishedSound = gameCenter.ContentLoader.Sounds["LevelUp"];
+            _upgradeSound = gameCenter.ContentLoader.Sounds["UpgradeRise"];
         }
 
         private void OnUpgradeButton()
         {
             if (State != PlayerState.Upgrading) return;
-
+            
             State = PlayerState.Waiting;
             _upgradeTimer = UpgradeTime;
+            _upgradeSound.Play();
+
         }
 
         private void OnMouse()
@@ -141,7 +150,11 @@ namespace MonoGameJam4.GameContent.Entities
                 {
                     Transform.Rotation += 20f * Time.FixedDeltaTime;
                     _upgradeTimer -= Time.FixedDeltaTime;
-                    if (_upgradeTimer <= 0) LevelUp();
+                    if (_upgradeTimer <= 0)
+                    {
+                        _finishedSound.Play();
+                        LevelUp();
+                    }
                     break;
                 }
                 case PlayerState.Pause:

@@ -77,20 +77,6 @@ namespace MonoGameJam4.GameContent.UI
                     spriteBatch.DrawString(_fontNormal, text, new Vector2(50, 300), Color.White, 0, Vector2.Zero,
                         Vector2.One, SpriteEffects.None, 1);
                     
-                    text = "use the mouse to look around,";
-                    size = _fontNormal.MeasureString(text);
-                    spriteBatch.DrawString(_fontNormal, text, new Vector2(50, 450), Color.White, 0, Vector2.Zero,
-                        Vector2.One * 0.8f, SpriteEffects.None, 1);
-                    
-                    text = "the left mouse button to shoot";
-                    size = _fontNormal.MeasureString(text);
-                    spriteBatch.DrawString(_fontNormal, text, new Vector2(50, 500), Color.White, 0, Vector2.Zero,
-                        Vector2.One * 0.8f, SpriteEffects.None, 1);
-                    
-                    text = "and 'wasd' to move";
-                    size = _fontNormal.MeasureString(text);
-                    spriteBatch.DrawString(_fontNormal, text, new Vector2(50, 550), Color.White, 0, Vector2.Zero,
-                        Vector2.One * 0.8f, SpriteEffects.None, 1);
                     break;
                 }
                 case GameState.Death:

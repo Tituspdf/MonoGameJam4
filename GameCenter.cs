@@ -82,7 +82,7 @@ namespace MonoGameJam4
             GameObjects.Add(new BulletDisplay(this, new Transform(), "BulletDisplay", player));
 
             GameObjects.Add(new Score(this, new Transform(), "ScoreDisplay", player));
-            
+            GameObjects.Add(new Tutorial(this, new Transform(), "Tutorial"));
             GameObjects.Add(screen);
         }
 

@@ -25,6 +25,7 @@ namespace MonoGameJam4.Engine.Rendering
             Textures.Add("Heart", contentManager.Load<Texture2D>("Heart"));
             Textures.Add("EmptyPoint", contentManager.Load<Texture2D>("EmptyPoint"));
             Textures.Add("BulletImage", contentManager.Load<Texture2D>("BuelletImage"));
+            Textures.Add("MonoGameLogo", contentManager.Load<Texture2D>("MonogameLogo"));
         }
     }
 }

@@ -24,6 +24,7 @@ namespace MonoGameJam4.GameContent.Entities
         {
             _velocity = velocity;
             Renderer = new Renderer(this, "Point");
+            gameCenter.ContentLoader.Sounds["Shoot"].Play();
         }
 
         public override void Update(GameTime gameTime)

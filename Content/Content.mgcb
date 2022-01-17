@@ -37,6 +37,12 @@
 /processorParam:TextureFormat=Color
 /build:EmptyPoint.png
 
+#begin EnemyExolodeSound.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:EnemyExolodeSound.wav
+
 #begin Frame.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -67,6 +73,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Heart.png
+
+#begin LevelUp.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LevelUp.wav
 
 #begin Logo.png
 /importer:TextureImporter
@@ -111,6 +123,12 @@
 /processorParam:TextureFormat=Compressed
 /build:ScoreFont.spritefont
 
+#begin Shoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Shoot.wav
+
 #begin Square.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -134,4 +152,10 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Triangle.png
+
+#begin UpgradeRise.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:UpgradeRise.wav
 

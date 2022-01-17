@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -7,11 +8,14 @@ namespace MonoGameJam4.Engine.Rendering
     public class ContentLoader
     {
         public Dictionary<string, Texture2D> Textures;
+        public readonly Dictionary<string, SoundEffect> Sounds;
         public SpriteFont ScoreFont { get; private set; }
         
         public ContentLoader()
         {
             Textures = new Dictionary<string, Texture2D>();
+
+            Sounds = new Dictionary<string, SoundEffect>();
         }
 
         public void LoadContend(ContentManager contentManager)
@@ -27,6 +31,11 @@ namespace MonoGameJam4.Engine.Rendering
             Textures.Add("BulletImage", contentManager.Load<Texture2D>("BuelletImage"));
             Textures.Add("MonoGameLogo", contentManager.Load<Texture2D>("MonogameLogo"));
             Textures.Add("Logo", contentManager.Load<Texture2D>("Logo"));
+            
+            Sounds.Add("EnemyExplode", contentManager.Load<SoundEffect>("EnemyExolodeSound"));
+            Sounds.Add("LevelUp", contentManager.Load<SoundEffect>("LevelUp"));
+            Sounds.Add("Shoot", contentManager.Load<SoundEffect>("Shoot"));
+            Sounds.Add("UpgradeRise", contentManager.Load<SoundEffect>("UpgradeRise"));
         }
     }
 }
